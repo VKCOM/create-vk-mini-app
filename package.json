@@ -1,11 +1,11 @@
 {
-	"name": "create-vk-app",
+	"name": "@vkontakte/create-vk-app",
 	"version": "1.0.0",
-	"description": "",
+	"description": "VK Apps Boilerplate",
 	"main": "src/index.js",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/VKCOM/vk-apps-boilerplate.git"
+		"url": "git://github.com/VKCOM/create-vk-app.git"
 	},
 	"bin": {
 		"create-vk-app": "./bin/create-vk-app.js"
