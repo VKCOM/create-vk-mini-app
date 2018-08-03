@@ -6,7 +6,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 const Home = props => (
 	<Panel id={props.id}>
 		{Object.keys(props.fetchedUser).length > 0 &&
-		<Group title="User Data Fetched with Vk Connect">
+		<Group title="User Data Fetched with VK Connect">
 
 			<ListItem 
 				before={<Avatar src={props.fetchedUser.photo_200}/>}
