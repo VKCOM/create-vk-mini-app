@@ -1,0 +1,21 @@
+{
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"es6": true,
+		"mocha": true
+	},
+	"rules": {
+		"indent": ["error", "tab"],
+		"no-tabs": "off",
+		"import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.js*"]}],
+		"react/jsx-indent": [1, "tab"],
+		"react/jsx-indent-props": [1, "tab"],
+		"jsx-a11y/anchor-is-valid": [ "error", {
+			"components": [ "Link" ],
+			"specialLink": [ "to" ]
+		}],
+		"max-len": ["error", 160],
+	}
+}
