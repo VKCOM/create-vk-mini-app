@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import * as VKConnect from '@vkontakte/vkui-connect';
 import App from './App';
 import registerServiceWorker from './sw';
 import './style.css';
@@ -16,6 +17,9 @@ const render = (Component) => {
 		root,
 	);
 };
+
+// Init VK App
+VKConnect.send('VKWebAppInit', {});
 
 render(App);
 

@@ -17,9 +17,9 @@
 	"author": "Gleb Vorontsov",
 	"license": "MIT",
 	"dependencies": {
-		"@vkontakte/icons": "^1.1.1",
-		"@vkontakte/vkui": "^2.5.1",
-		"@vkontakte/vkui-connect": "^1.0.0",
+		"@vkontakte/icons": "latest",
+		"@vkontakte/vkui": "latest",
+		"@vkontakte/vkui-connect": "latest",
 		"fs-extra": "^7.0.0",
 		"prop-types": "^15.6.2",
 		"react": "^16.4.1",

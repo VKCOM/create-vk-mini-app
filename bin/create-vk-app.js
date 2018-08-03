@@ -19,8 +19,7 @@ const getDeps = deps =>
 		.replace(/^/g, '')
 		// exclude the plugin only used in this file, nor relevant to the boilerplate
 		.replace(/fs-extra[^\s]+/g, '')
-		.replace(/gh-pages[^\s]+/g, '')
-		.replace(/@vkontakte\/vkui[^\s]+/g, '@vkontakte/vkui');
+		.replace(/gh-pages[^\s]+/g, '');
 
 console.log('🎬  Creating project...');
 
