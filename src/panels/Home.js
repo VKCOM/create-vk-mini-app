@@ -8,9 +8,12 @@ const Home = props => (
 		{Object.keys(props.fetchedUser).length > 0 &&
 		<Group title="User Data Fetched with Vk Connect">
 
-			<List>
-				<ListItem before={<Avatar src={props.fetchedUser.photo_200}/>}description={props.fetchedUser.city.title}>{`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`}</ListItem>
-			</List>
+			<ListItem 
+				before={<Avatar src={props.fetchedUser.photo_200}/>}
+				description={props.fetchedUser.city.title}
+			>
+				{`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`}
+			</ListItem>
 
 		</Group>}
 
