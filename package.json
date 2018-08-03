@@ -5,9 +5,8 @@
 	"main": "src/index.js",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/kuhel/vk-apps-boilerplate.git"
+		"url": "git://github.com/VKCOM/vk-apps-boilerplate.git"
 	},
-	"homepage": "https://kuhel.github.io/vk-apps-boilerplate/",
 	"bin": {
 		"create-vk-app": "./bin/create-vk-app.js"
 	},

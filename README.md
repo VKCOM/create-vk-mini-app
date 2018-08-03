@@ -1,8 +1,8 @@
 ## How to install
 
-`node ./bin/create-vk-app.js <folder name> <vk app id>`
+`node ./bin/create-vk-app.js <folder name>`
 
-`npx @vkontakte/create-vk-app <folder name> <vk app id>`
+`npx @vkontakte/create-vk-app <folder name>`
 
 ## How to start
 
