@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, List, ListItem, Button, Group, Div, Avatar } from '@vkontakte/vkui';
+import { Panel, ListItem, Button, Group, Div, Avatar } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 const Home = props => (
