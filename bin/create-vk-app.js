@@ -52,7 +52,7 @@ exec(
 
 
 		https.get(
-			'https://raw.githubusercontent.com/kuhel/vk-apps-boilerplate/master/.gitignore',
+			'https://raw.githubusercontent.com/VKCOM/create-vk-app/blob/master/.gitignore',
 			(res) => {
 				res.setEncoding('utf8');
 				let body = '';
@@ -72,7 +72,7 @@ exec(
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
 		exec(
-			`cd ${process.argv[2]}${devDeps ? ` && yarn add ${devDeps} --dev` : ''}${deps ? ` && yarn add ${deps}` : ''}`,
+			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
 			(npmErr, npmStdout) => {
 				if (npmErr) {
 					console.error(`😳  npm error:\n${npmErr}`);
