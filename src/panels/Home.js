@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Entity, Button, Group, Div } from '@vkontakte/vkui';
+import { Panel, List, ListItem, Button, Group, Div, Avatar } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 const Home = props => (
 	<Panel id={props.id}>
 		{Object.keys(props.fetchedUser).length > 0 &&
 		<Group title="User Data Fetched with Vk Connect">
-			<Div>
-				<Entity
-					photo={props.fetchedUser.photo_200}
-					size={48}
-					title={`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`}
-					description={props.fetchedUser.city.title}
-				/>
-			</Div>
+
+			<List>
+				<ListItem before={<Avatar src={props.fetchedUser.photo_200}/>}description={props.fetchedUser.city.title}>{`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`}</ListItem>
+			</List>
 
 		</Group>}
 

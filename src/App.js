@@ -4,8 +4,8 @@ import { ConfigProvider, View } from '@vkontakte/vkui';
 import { isWebView } from '@vkontakte/vkui/src/lib/webview';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import Home from './containers/Home';
-import Persik from './containers/Persik';
+import Home from './panels/Home';
+import Persik from './panels/Persik';
 
 class App extends React.Component {
 	constructor(props) {
