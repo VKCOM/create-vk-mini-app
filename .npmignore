@@ -1,0 +1,15 @@
+node_modules
+
+npm-debug.log
+stats.json
+dist/*.hot-update.*
+
+.idea
+.DS_Store
+.env
+.eslintrc
+.eslintignore
+.browserslistrc
+.stylelintrc
+.gitignore
+package-lock.json
