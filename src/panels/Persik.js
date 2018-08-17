@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import { Panel, Button, Group, Div } from '@vkontakte/vkui';
 import Icon24BrowserBack from '@vkontakte/icons/dist/24/browser_back';
 import persik from '../img/persik.png';
-
-const styles = {
-	display: 'block',
-	width: '30%',
-	maxWidth: 240,
-	margin: '20px auto'
-};
+import './Persik.css';
 
 const Persik = props => (
 	<Panel id={props.id}>
@@ -25,8 +19,8 @@ const Persik = props => (
 			</Div>
 			<Div>
 				<img
+					className="Persik"
 					src={persik}
-					style={styles}
 					alt="Persik The Cat"
 				/>
 			</Div>
