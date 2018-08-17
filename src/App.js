@@ -29,6 +29,9 @@ class App extends React.Component {
 				});
 			}
 		});
+		// It is necessary to call VKWebAppInit to launch the app
+		VKConnect.send('VKWebAppInit', {});
+
 		VKConnect.send('VKWebAppGetUserInfo', {});
 	}
 
