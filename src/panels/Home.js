@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, ListItem, Button, Group, Div, Avatar } from '@vkontakte/vkui';
+import { Panel, ListItem, Button, Group, Div, Avatar, PanelHeader } from '@vkontakte/vkui';
 
 const Home = props => (
 	<Panel id={props.id}>
-		{Object.keys(props.fetchedUser).length > 0 &&
+		<PanelHeader>Example</PanelHeader>
+		{props.fetchedUser &&
 		<Group title="User Data Fetched with VK Connect">
 			<ListItem
 				before={<Avatar src={props.fetchedUser.photo_200}/>}
@@ -16,11 +17,7 @@ const Home = props => (
 
 		<Group title="Navigation Example">
 			<Div>
-				<Button
-					size="xl"
-					level="2"
-					onClick={() => props.clickHandler()}
-				>
+				<Button size="xl" level="2" onClick={props.go} data-to="persik">
 					Show me the Persik, please
 				</Button>
 			</Div>
@@ -30,7 +27,7 @@ const Home = props => (
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
-	clickHandler: PropTypes.func.isRequired,
+	go: PropTypes.func.isRequired,
 	fetchedUser: PropTypes.shape({
 		photo_200: PropTypes.string,
 		first_name: PropTypes.string,

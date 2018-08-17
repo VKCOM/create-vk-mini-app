@@ -12,7 +12,7 @@ class App extends React.Component {
 
 		this.state = {
 			activePanel: 'home',
-			fetchedUser: {},
+			fetchedUser: null,
 		};
 	}
 
@@ -20,7 +20,7 @@ class App extends React.Component {
 		connect.subscribe((e) => {
 			switch (e.detail.type) {
 				case 'VKWebAppGetUserInfoResult':
-					this.setState({ fetchedUser: { ...e.detail.data } });
+					this.setState({ fetchedUser: e.detail.data });
 					break;
 				default:
 					console.log(e.detail.type);
@@ -29,11 +29,15 @@ class App extends React.Component {
 		connect.send('VKWebAppGetUserInfo', {});
 	}
 
+	go = (e) => {
+		this.setState({ activePanel: e.currentTarget.dataset.to })
+	};
+
 	render() {
 		return (
-			<View activePanel={this.state.activePanel} header={false}>
-				<Home id="home" fetchedUser={this.state.fetchedUser} clickHandler={() => this.setState({ activePanel: 'persik' })} />
-				<Persik id="persik" clickHandler={() => this.setState({ activePanel: 'home' })} />
+			<View activePanel={this.state.activePanel}>
+				<Home id="home" fetchedUser={this.state.fetchedUser} go={this.go} />
+				<Persik id="persik" go={this.go} />
 			</View>
 		);
 	}
