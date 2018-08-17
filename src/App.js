@@ -1,7 +1,6 @@
 import React from 'react';
-import * as VKConnect from '@vkontakte/vkui-connect';
-import { ConfigProvider, View } from '@vkontakte/vkui';
-import { isWebView } from '@vkontakte/vkui/src/lib/webview';
+import connect from '@vkontakte/vkui-connect';
+import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
@@ -18,31 +17,24 @@ class App extends React.Component {
 	}
 
 	componentWillMount() {
-		// VK Connect
-		VKConnect.subscribe((e) => {
-			if (!e.detail) {
-			} else if (e.detail.type === 'VKWebAppGetUserInfoResult') {
-				this.setState({
-					fetchedUser: {
-						...e.detail.data 
-					},
-				});
+		connect.subscribe((e) => {
+			switch (e.detail.type) {
+				case 'VKWebAppGetUserInfoResult':
+					this.setState({ fetchedUser: { ...e.detail.data } });
+					break;
+				default:
+					console.log(e.detail.type);
 			}
 		});
-		// It is necessary to call VKWebAppInit to launch the app
-		VKConnect.send('VKWebAppInit', {});
-
-		VKConnect.send('VKWebAppGetUserInfo', {});
+		connect.send('VKWebAppGetUserInfo', {});
 	}
 
 	render() {
 		return (
-			<ConfigProvider isWebView={isWebView}>
-				<View activePanel={this.state.activePanel} header={false}>
-					<Home id="home" fetchedUser={this.state.fetchedUser} clickHandler={() => this.setState({ activePanel: 'persik' })} />
-					<Persik id="persik" clickHandler={() => this.setState({ activePanel: 'home' })} />
-				</View>
-			</ConfigProvider>
+			<View activePanel={this.state.activePanel} header={false}>
+				<Home id="home" fetchedUser={this.state.fetchedUser} clickHandler={() => this.setState({ activePanel: 'persik' })} />
+				<Persik id="persik" clickHandler={() => this.setState({ activePanel: 'home' })} />
+			</View>
 		);
 	}
 }

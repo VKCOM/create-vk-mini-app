@@ -17,6 +17,7 @@
 	"author": "Gleb Vorontsov",
 	"license": "MIT",
 	"dependencies": {
+		"core-js": "^2.5.7",
 		"@vkontakte/icons": "latest",
 		"@vkontakte/vkui": "latest",
 		"@vkontakte/vkui-connect": "latest",
