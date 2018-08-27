@@ -7,7 +7,7 @@ const { exec } = require('child_process');
 
 const packageJson = require('../package.json');
 
-const scripts = `"start": "PORT=10888 react-scripts start",
+const scripts = `"start": "cross-env PORT=10888 react-scripts start",
 "build": "react-scripts build"`;
 
 // Parse and prepare string to install dependencies
@@ -72,7 +72,7 @@ exec(
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
 		exec(
-			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
+			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --save-dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
 			(npmErr, npmStdout) => {
 				if (npmErr) {
 					console.error(`😳  npm error:\n${npmErr}`);
