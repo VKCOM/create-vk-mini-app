@@ -1,6 +1,6 @@
 {
 	"name": "@vkontakte/create-vk-app",
-	"version": "1.0.8",
+	"version": "1.0.81",
 	"description": "VK Apps Boilerplate",
 	"main": "src/index.js",
 	"repository": {
@@ -17,11 +17,11 @@
 	"author": "Gleb Vorontsov",
 	"license": "MIT",
 	"dependencies": {
-		"core-js": "^2.5.7",
-		"fs-extra": "^7.0.0",
 		"@vkontakte/icons": "latest",
 		"@vkontakte/vkui": "latest",
 		"@vkontakte/vkui-connect": "latest",
+		"core-js": "^2.5.7",
+		"fs-extra": "^7.0.0",
 		"prop-types": "^15.6.2",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1"
