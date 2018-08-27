@@ -18,6 +18,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"core-js": "^2.5.7",
+		"fs-extra": "^7.0.0",
 		"@vkontakte/icons": "latest",
 		"@vkontakte/vkui": "latest",
 		"@vkontakte/vkui-connect": "latest",
@@ -27,7 +28,6 @@
 	},
 	"devDependencies": {
 		"cross-env": "^5.2.0",
-		"fs-extra": "^7.0.0",
 		"react-hot-loader": "^4.3.4",
 		"react-scripts": "^1.1.4"
 	}
