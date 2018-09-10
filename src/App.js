@@ -16,7 +16,7 @@ class App extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		connect.subscribe((e) => {
 			switch (e.detail.type) {
 				case 'VKWebAppGetUserInfoResult':
