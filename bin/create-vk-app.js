@@ -51,21 +51,27 @@ exec(
 		}
 
 
-		https.get(
-			'https://raw.githubusercontent.com/VKCOM/create-vk-app/blob/master/.gitignore',
-			(res) => {
-				res.setEncoding('utf8');
-				let body = '';
-				res.on('data', (data) => {
-					body += data;
-				});
-				res.on('end', () => {
-					fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
-						if (err) throw err;
-					});
-				});
-			},
-		);
+		let body = `# Logs
+			logs
+			*.log
+			npm-debug.log*
+			*.lock
+			
+			# Dependency directories
+			node_modules
+			
+			# Optional npm cache directory
+			.npm
+			
+			# Prod Bundle
+			build
+			
+			.vscode
+			.idea
+		`;
+		fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+			if (err) throw err;
+		});
 
 		// installing dependencies
 		console.log('⏱  Installing project dependencies — it might take a few minutes..');
