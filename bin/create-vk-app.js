@@ -52,23 +52,24 @@ exec(
 
 
 		let body = `# Logs
-			logs
-			*.log
-			npm-debug.log*
-			*.lock
-			
-			# Dependency directories
-			node_modules
-			
-			# Optional npm cache directory
-			.npm
-			
-			# Prod Bundle
-			build
-			
-			.vscode
-			.idea
-		`;
+logs
+*.log
+npm-debug.log*
+*.lock
+
+# Dependency directories
+package-lock.json
+/node_modules
+
+# Optional npm cache directory
+.npm
+
+# Prod Bundle
+/build
+
+.vscode
+.idea
+`;
 		fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
 			if (err) throw err;
 		});
