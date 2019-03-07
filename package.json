@@ -32,7 +32,7 @@
 	},
 	"devDependencies": {
 		"cross-env": "^5.2.0",
-		"react-hot-loader": "^4.7.1",
-		"react-scripts": "^2.1.5"
+		"react-hot-loader": "^4.8.0",
+		"react-scripts": "^2.1.8"
 	}
 }
