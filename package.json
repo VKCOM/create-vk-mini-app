@@ -1,6 +1,6 @@
 {
 	"name": "@vkontakte/create-vk-app",
-	"version": "1.4.3",
+	"version": "1.4.0",
 	"description": "VK Apps Boilerplate",
 	"main": "src/index.js",
 	"repository": {
