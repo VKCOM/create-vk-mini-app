@@ -6,6 +6,15 @@ import connect from '@vkontakte/vkui-connect';
 import App from './App';
 // import registerServiceWorker from './sw';
 
+// Support themes
+connect.subscribe((e) => {
+    if (e.detail.type === 'VKWebAppUpdateConfig') {
+        let schemeAttribute = document.createAttribute('scheme');
+        schemeAttribute.value = e.detail.data.scheme ? e.detail.data.scheme : 'client_light';
+        document.body.attributes.setNamedItem(schemeAttribute);
+    }
+});
+
 // Init VK App
 connect.send('VKWebAppInit', {});
 
