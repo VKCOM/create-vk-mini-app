@@ -160,6 +160,7 @@ package-lock.json
 		}
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
+
 		exec(
 			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --save-dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
 			(npmErr, npmStdout) => {
@@ -176,15 +177,26 @@ package-lock.json
 
 				fs.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
 				.then(() => {
-					// TODO Config feature will be enabled later
-					// if (process.argv[3] !== undefined) {
-					// 	const configFile = `${process.argv[2]}/src/config.js`;
-					// 	const data = `export default {\n\tappId: ${process.argv[3]},\n};\n`;
-					// 	fs.writeFile(configFile, data, (err) => {
-					// 		if (err) throw err;
-					// 	});
-					// }
-					console.log(`✌️ VK Mini App Boilerplate is ready to start in ${process.argv[2]} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
+                    //Connect type
+                    if (usePromise) {
+                        const JS_FILES = [
+                            path.join(__dirname, `../${process.argv[2]}/src/index.js`),
+                            path.join(__dirname, `../${process.argv[2]}/src/App.js`),
+                        ];
+                        JS_FILES.forEach((jsFile) => {
+                            fs.readFile(jsFile, 'utf8', function (err,data) {
+                                if (err) {
+                                    return console.log(err);
+                                }
+                                const result = data.replace(/'@vkontakte\/vkui-connect'/g, '\'@vkontakte/vkui-connect-promise\'');
+
+                                fs.writeFile(jsFile, result, 'utf8', function (err) {
+                                    if (err) return console.log(err);
+                                });
+                            });
+                        });
+                    }
+                    console.log(`✌️ VK Mini App Boilerplate is ready to start in ${process.argv[2]} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
 				})
 				.catch(err => console.error(err));
 			}
