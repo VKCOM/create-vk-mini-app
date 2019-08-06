@@ -1,6 +1,6 @@
 {
 	"name": "@vkontakte/create-vk-mini-app",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "VK Mini Apps Boilerplate",
 	"main": "bin/create-vk-mini-app.js   ",
 	"bin": {
@@ -20,7 +20,7 @@
 		"@vkontakte/vkui": "latest",
 		"babel-eslint": "^9.0.0",
 		"chalk": "^2.4.2",
-		"core-js": "^2.6.9",
+		"core-js": "^3.1.4",
 		"fs-extra": "^8.0.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.6",
