@@ -179,18 +179,21 @@ package-lock.json
 				.then(() => {
                     //Connect type
                     if (usePromise) {
-                        const JS_FILES = [
-                            path.join(__dirname, `../${process.argv[2]}/src/index.js`),
-                            path.join(__dirname, `../${process.argv[2]}/src/App.js`),
+                        const JS_TEMPLATE_FILES = [
+                            path.join(__dirname, `../src/index.js`),
+                            path.join(__dirname, `../src/App.js`),
                         ];
-                        JS_FILES.forEach((jsFile) => {
+						const JS_FILES = [
+							`${process.argv[2]}/src/index.js`,
+							`${process.argv[2]}/src/App.js`,
+						];
+						JS_TEMPLATE_FILES.map((jsFile, index) => {
                             fs.readFile(jsFile, 'utf8', function (err,data) {
                                 if (err) {
                                     return console.log(err);
                                 }
                                 const result = data.replace(/'@vkontakte\/vkui-connect'/g, '\'@vkontakte/vkui-connect-promise\'');
-
-                                fs.writeFile(jsFile, result, 'utf8', function (err) {
+                                fs.writeFile(JS_FILES[index], result, 'utf8', function (err) {
                                     if (err) return console.log(err);
                                 });
                             });
