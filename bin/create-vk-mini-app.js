@@ -156,7 +156,7 @@ package-lock.json
 		if (usePromise) {
 			packageJson.dependencies['@vkontakte/vkui-connect-promise'] = 'latest';
 		} else {
-			packageJson.dependencies['@vkontakte/vkui-connect'] = 'latest';
+			packageJson.dependencies['@vkontakte/vk-connect'] = 'latest';
 		}
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
@@ -192,7 +192,7 @@ package-lock.json
                                 if (err) {
                                     return console.log(err);
                                 }
-                                const result = data.replace(/'@vkontakte\/vkui-connect'/g, '\'@vkontakte/vkui-connect-promise\'');
+                                const result = data.replace(/'@vkontakte\/vk-connect'/g, '\'@vkontakte/vkui-connect-promise\'');
                                 fs.writeFile(JS_FILES[index], result, 'utf8', function (err) {
                                     if (err) return console.log(err);
                                 });
