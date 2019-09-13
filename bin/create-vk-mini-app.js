@@ -153,10 +153,11 @@ package-lock.json
 		if (useSurge) {
 			packageJson.devDependencies['surge'] = 'latest';
 		}
+
+		packageJson.dependencies['@vkontakte/vk-connect'] = 'latest';
+
 		if (usePromise) {
 			packageJson.dependencies['@vkontakte/vkui-connect-promise'] = 'latest';
-		} else {
-			packageJson.dependencies['@vkontakte/vk-connect'] = 'latest';
 		}
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
