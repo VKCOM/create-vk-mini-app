@@ -8,7 +8,6 @@ const { exec } = require('child_process');
 const packageJson = require('../package.json');
 
 const showHelp = ~process.argv.indexOf('--help');
-const usePromise = ~process.argv.indexOf('--promise');
 const useZeit = ~process.argv.indexOf('--zeit');
 const surgeIndex = process.argv.indexOf('--surge');
 const useSurge = ~surgeIndex;
@@ -156,15 +155,12 @@ package-lock.json
 
 		packageJson.dependencies['@vkontakte/vk-connect'] = 'latest';
 
-		if (usePromise) {
-			packageJson.dependencies['@vkontakte/vkui-connect-promise'] = 'latest';
-		}
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
 
 		exec(
 			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --save-dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
-			(npmErr, npmStdout) => {
+			(npmErr) => {
 				if (npmErr) {
 					console.error(`😳 npm error:\n${npmErr}`);
 					return;
@@ -178,28 +174,6 @@ package-lock.json
 
 				fs.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
 				.then(() => {
-                    //Connect type
-                    if (usePromise) {
-                        const JS_TEMPLATE_FILES = [
-                            path.join(__dirname, `../src/index.js`),
-                            path.join(__dirname, `../src/App.js`),
-                        ];
-						const JS_FILES = [
-							`${process.argv[2]}/src/index.js`,
-							`${process.argv[2]}/src/App.js`,
-						];
-						JS_TEMPLATE_FILES.map((jsFile, index) => {
-                            fs.readFile(jsFile, 'utf8', function (err,data) {
-                                if (err) {
-                                    return console.log(err);
-                                }
-                                const result = data.replace(/'@vkontakte\/vk-connect'/g, '\'@vkontakte/vkui-connect-promise\'');
-                                fs.writeFile(JS_FILES[index], result, 'utf8', function (err) {
-                                    if (err) return console.log(err);
-                                });
-                            });
-                        });
-                    }
                     console.log(`✌️ VK Mini App Boilerplate is ready to start in ${process.argv[2]} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
 				})
 				.catch(err => console.error(err));
