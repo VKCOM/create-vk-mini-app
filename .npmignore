@@ -13,3 +13,4 @@ dist/*.hot-update.*
 .stylelintrc
 .gitignore
 package-lock.json
+*.log
