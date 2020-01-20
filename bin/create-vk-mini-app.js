@@ -111,7 +111,7 @@ package-lock.json
 		//Zeit
 		if (useZeit) {
 			const nowJson = `{
-    "version": 1,
+    "version": 2,
     "name": "VK Mini App",
     "builds": [
         {
