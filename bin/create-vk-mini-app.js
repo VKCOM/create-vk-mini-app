@@ -56,7 +56,7 @@ const getDeps = (deps) =>
 		.replace(/fs-extra[^\s]+/g, '')
 		.replace(/gh-pages[^\s]+/g, '');
 
-console.log('🎬  Creating project...');
+console.log('🎬 Creating project...');
 
 exec(
 	`mkdir ${miniAppDirectory} && cd ${miniAppDirectory} && npm init -f`,
@@ -170,12 +170,12 @@ package-lock.json
 
 				console.log('⏱ Copying VK Mini App source files..');
 				fs.copy(path.join(__dirname, '../public'), `${miniAppDirectory}/public`)
-				.then(() => console.log(`🖼  Assets directory and file copied`))
+				.then(() => console.log(`🖼 Assets directory and file copied`))
 				.catch(err => console.error(err));
 
 				fs.copy(path.join(__dirname, '../src'), `${miniAppDirectory}/src`)
 				.then(() => {
-                    console.log(`✌️ VK Mini App Boilerplate is ready to start in ${miniAppDirectory} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
+                    console.log(`✌️ VK Mini App Boilerplate is ready to start in ${miniAppDirectory} folder. \n🧐 Check README.MD for brief instructrions.\n💻 Happy Coding!`)
 				})
 				.catch(err => console.error(err));
 			}
