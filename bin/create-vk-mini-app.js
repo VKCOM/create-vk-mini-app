@@ -7,6 +7,7 @@ const { exec } = require('child_process');
 
 const packageJson = require('../package.json');
 
+const miniAppDirectory = process.argv[2] ? process.argv[2] : 'mini-app';
 const showHelp = ~process.argv.indexOf('--help');
 const useZeit = ~process.argv.indexOf('--zeit');
 const surgeIndex = process.argv.indexOf('--surge');
@@ -58,13 +59,13 @@ const getDeps = (deps) =>
 console.log('🎬  Creating project...');
 
 exec(
-	`mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`,
+	`mkdir ${miniAppDirectory} && cd ${miniAppDirectory} && npm init -f`,
 	(initErr) => {
 		if (initErr) {
 			console.error(`😳 Initializing error:\n${initErr}`);
 			return;
 		}
-		const packageJSON = `${process.argv[2]}/package.json`;
+		const packageJSON = `${miniAppDirectory}/package.json`;
 
 		fs.readFile(packageJSON, (err, file) => {
 			if (err) throw err;
@@ -81,7 +82,7 @@ exec(
 
 		for (let i = 0; i < filesToCopy.length; i += 1) {
 			fs.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
-			.pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
+			.pipe(fs.createWriteStream(`${miniAppDirectory}/${filesToCopy[i]}`));
 		}
 
 
@@ -104,7 +105,7 @@ package-lock.json
 .vscode
 .idea
 `;
-		fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+		fs.writeFile(`${miniAppDirectory}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
 			if (err) throw err;
 		});
 
@@ -142,7 +143,7 @@ package-lock.json
         }
     ]
 }`;
-			fs.writeFile(`${process.argv[2]}/now.json`, nowJson, { encoding: 'utf-8' }, (err) => {
+			fs.writeFile(`${miniAppDirectory}/now.json`, nowJson, { encoding: 'utf-8' }, (err) => {
 				if (err) throw err;
 			});
 		}
@@ -159,7 +160,7 @@ package-lock.json
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
 
 		exec(
-			`cd ${process.argv[2]}${devDeps ? ` && npm install ${devDeps} --save-dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
+			`cd ${miniAppDirectory}${devDeps ? ` && npm install ${devDeps} --save-dev` : ''}${deps ? ` && npm install ${deps}` : ''}`,
 			(npmErr) => {
 				if (npmErr) {
 					console.error(`😳 npm error:\n${npmErr}`);
@@ -168,13 +169,13 @@ package-lock.json
 				console.log('✅ Dependencies installed');
 
 				console.log('⏱ Copying VK Mini App source files..');
-				fs.copy(path.join(__dirname, '../public'), `${process.argv[2]}/public`)
+				fs.copy(path.join(__dirname, '../public'), `${miniAppDirectory}/public`)
 				.then(() => console.log(`🖼  Assets directory and file copied`))
 				.catch(err => console.error(err));
 
-				fs.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+				fs.copy(path.join(__dirname, '../src'), `${miniAppDirectory}/src`)
 				.then(() => {
-                    console.log(`✌️ VK Mini App Boilerplate is ready to start in ${process.argv[2]} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
+                    console.log(`✌️ VK Mini App Boilerplate is ready to start in ${miniAppDirectory} folder. \n🧐  Check README.MD for brief instructrions.\n💻  Happy Coding!`)
 				})
 				.catch(err => console.error(err));
 			}
