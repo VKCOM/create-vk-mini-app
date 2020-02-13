@@ -1,6 +1,6 @@
 {
 	"name": "@vkontakte/create-vk-mini-app",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "VK Mini Apps Boilerplate",
 	"main": "bin/create-vk-mini-app.js   ",
 	"bin": {
@@ -24,12 +24,10 @@
 		"fs-extra": "^8.0.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.9.0",
-		"react-dom": "^16.9.0",
-		"webpack": "4.41.5"
+		"react-dom": "^16.9.0"
 	},
 	"devDependencies": {
 		"cross-env": "^5.2.0",
-		"eslint": "6.6.0",
 		"react-hot-loader": "^4.9.0",
 		"react-scripts": "^3.1.2"
 	}
