@@ -154,7 +154,7 @@ package-lock.json
 			packageJson.devDependencies['surge'] = 'latest';
 		}
 
-		packageJson.dependencies['@vkontakte/vk-connect'] = 'latest';
+		packageJson.dependencies['@vkontakte/vk-bridge'] = 'latest';
 
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
