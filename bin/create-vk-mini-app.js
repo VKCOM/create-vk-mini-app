@@ -16,7 +16,7 @@ const surgeDomain = useSurge ? process.argv[surgeIndex + 1] : '';
 
 if (showHelp) {
 	console.error(`🖖 Usage:
-1️⃣ Create VK Mini App with gh-pages deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name>')}
+1️⃣ Create VK Mini App with @vkontakte/vk-miniapps-deploy deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name>')}
 2️⃣ Create VK Mini App with Zeit deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name> --zeit')}
 3️⃣ Create VK Mini App with Surge deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name> --surge <surge-domain>')}`);
 	return;
@@ -27,8 +27,10 @@ if (useSurge && !surgeDomain) {
 	return;
 }
 
-const scripts = `"start": "cross-env PORT=10888 react-scripts start",
-"build": "react-scripts build"${useZeit ? `,
+const scripts = `"start": "cross-env PORT=10888 HTTPS=true react-scripts start",
+"build": "react-scripts build",
+"predeploy": "npm run build",
+"deploy": "vk-miniapps-deploy"${useZeit ? `,
 "now-build": "react-scripts build"` : ''}${useSurge ? `,
 "surge-deploy": "npm run build && surge ./build --domain ${surgeDomain}.surge.sh"` : ''}`;
 
@@ -108,6 +110,19 @@ package-lock.json
 		fs.writeFile(`${miniAppDirectory}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
 			if (err) throw err;
 		});
+
+		fs.writeFile(`${miniAppDirectory}/vk-hosting-config.json`, `{
+  "static_path": "build",
+  "app_id": 0,
+  "endpoints": {
+    "mobile": "index.html",
+    "mvk": "index.html",
+    "web": "index.html"
+  }
+}`, { encoding: 'utf-8' }, (err) => {
+			if (err) throw err;
+		});
+
 
 		//Zeit
 		if (useZeit) {

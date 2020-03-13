@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/create-vk-mini-app",
-  "version": "1.6.1",
+  "version": "1.6.0",
   "description": "VK Mini Apps Boilerplate",
   "main": "bin/create-vk-mini-app.js   ",
   "bin": {
@@ -13,14 +13,28 @@
     "node": ">=6.0.0"
   },
   "keywords": [],
-  "author": "Gleb Vorontsov",
+  "author": {
+    "name": "VK",
+    "url": "https://vk.com"
+  },
+  "contributors": [
+    {
+      "name": "Gleb Vorontsov",
+      "email": "vorontsov.gleb@gmail.com",
+      "url": "https://vk.com/boy"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
-    "@vkontakte/icons": "^1.16.3",
-    "@vkontakte/vkui": "^3.4.0",
+    "@vkontakte/icons": "^1.17.1",
+    "@vkontakte/vk-miniapps-deploy": "^0.0.15",
+    "@vkontakte/vkui": "^3.4.2",
     "babel-eslint": "10.0.3",
     "chalk": "^2.4.2",
     "core-js": "^3.1.4",
+    "eruda": "^2.2.0",
+    "eruda-code": "^2.0.0",
+    "eruda-dom": "^2.0.0",
     "fs-extra": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
