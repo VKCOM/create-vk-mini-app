@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/create-vk-mini-app",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "VK Mini Apps Boilerplate",
   "main": "bin/create-vk-mini-app.js   ",
   "bin": {
