@@ -4,7 +4,8 @@
 
 ## How to install
 
-### Create VK Mini App with gh-pages deploy
+
+### Create VK Mini App with VK deploy
 
 `npx @vkontakte/create-vk-mini-app <app-directory-name>`
 
