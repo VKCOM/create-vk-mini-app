@@ -1602,10 +1602,10 @@
     require-module "^0.1.0"
     zip-a-folder "0.0.12"
 
-"@vkontakte/vkui@^3.5.0":
-  version "3.11.2"
-  resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-3.11.2.tgz#61893e68f5889671326a906cd04a5c23b5bc7de2"
-  integrity sha512-XnH6Jhky80vpkp6tnBcxxEKT7DNX9VduOzpQrvAsqC03KmTaFHBjgwVSmF46U/ScLjQt3qwIjKGqm+VXAAZ4kQ==
+"@vkontakte/vkui@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.0.4.tgz#8485ebf9e818e391f09589a9333ddbd974bb287c"
+  integrity sha512-kj8S5J/fAyWiCeqEg1Q5tfzkHEtaXmhh4rWKIGU9GzMZYZIszWZU3RmUPtJPf3wKhs9p6cm3VhSzNKsHA+WSbA==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
