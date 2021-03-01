@@ -2148,7 +2148,7 @@
     require-module "^0.1.0"
     zip-a-folder "0.0.12"
 
-"@vkontakte/vkui@^4.0.4":
+"@vkontakte/vkui@4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.0.4.tgz#8485ebf9e818e391f09589a9333ddbd974bb287c"
   integrity sha512-kj8S5J/fAyWiCeqEg1Q5tfzkHEtaXmhh4rWKIGU9GzMZYZIszWZU3RmUPtJPf3wKhs9p6cm3VhSzNKsHA+WSbA==
