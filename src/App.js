@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import View from '@vkontakte/vkui/dist/components/View/View';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
+import { AdaptivityProvider, AppRoot } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
@@ -33,10 +34,14 @@ const App = () => {
 	};
 
 	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
-		</View>
+		<AdaptivityProvider>
+			<AppRoot>
+				<View activePanel={activePanel} popout={popout}>
+					<Home id='home' fetchedUser={fetchedUser} go={go} />
+					<Persik id='persik' go={go} />
+				</View>
+			</AppRoot>
+		</AdaptivityProvider>
 	);
 }
 

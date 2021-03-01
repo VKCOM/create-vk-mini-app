@@ -30,7 +30,7 @@
   "dependencies": {
     "@vkontakte/icons": "^1.18.2",
     "@vkontakte/vk-miniapps-deploy": "^0.0.17",
-    "@vkontakte/vkui": "^4.0.4",
+    "@vkontakte/vkui": "4.0.4",
     "babel-eslint": "10.1.0",
     "chalk": "^2.4.2",
     "eruda": "^2.2.0",
