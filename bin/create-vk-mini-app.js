@@ -8,6 +8,7 @@ const { exec } = require('child_process');
 const packageJson = require('../package.json');
 
 const miniAppDirectory = process.argv[2] ? process.argv[2] : 'mini-app';
+const shouldSkipDirectoryCreation = miniAppDirectory === '.';
 const showHelp = ~process.argv.indexOf('--help');
 const useZeit = ~process.argv.indexOf('--zeit');
 const surgeIndex = process.argv.indexOf('--surge');
@@ -61,7 +62,7 @@ const getDeps = (deps) =>
 console.log('🎬 Creating project...');
 
 exec(
-	`mkdir ${miniAppDirectory} && cd ${miniAppDirectory} && npm init -f`,
+	`${shouldSkipDirectoryCreation ? '' : `mkdir ${miniAppDirectory} && cd ${miniAppDirectory} && `}npm init -f`,
 	(initErr) => {
 		if (initErr) {
 			console.error(`😳 Initializing error:\n${initErr}`);
