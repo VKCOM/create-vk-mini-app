@@ -2,6 +2,10 @@
 
 # Create VK Mini App [![npm][npm]][npm-url] [![deps][deps]][deps-url]
 
+## Software requirements
+
+Node.js v14.15.0 LTS or later LTS release
+
 ## How to use
 
 ### With NPX
