@@ -170,7 +170,6 @@ package-lock.json
 		}
 
 		packageJson.dependencies['@vkontakte/vk-bridge'] = 'latest';
-		packageJson.dependencies['@vkontakte/vkjs'] = 'latest';
 
 		const devDeps = packageJson.devDependencies ? getDeps(packageJson.devDependencies) : '';
 		const deps = packageJson.dependencies ? getDeps(packageJson.dependencies) : '';
