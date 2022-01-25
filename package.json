@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/create-vk-mini-app",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "VK Mini Apps Boilerplate",
   "repository": "https://github.com/VKCOM/create-vk-mini-app",
   "homepage": "https://vk.com/dev/vk_apps_docs",
@@ -28,9 +28,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@vkontakte/icons": "^1.92.0",
+    "@vkontakte/icons": "1.141.1",
     "@vkontakte/vk-miniapps-deploy": "0.0.25",
-    "@vkontakte/vkui": "^4.5.0",
+    "@vkontakte/vkui": "4.5.0",
     "babel-eslint": "^10.1.0",
     "chalk": "^4.1.0",
     "eruda": "^2.4.1",

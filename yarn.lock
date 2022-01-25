@@ -2878,10 +2878,10 @@
     "@typescript-eslint/types" "4.13.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vkontakte/icons@^1.92.0":
-  version "1.102.0"
-  resolved "https://registry.yarnpkg.com/@vkontakte/icons/-/icons-1.102.0.tgz#89a8b4b5eea07ceeb7b02a28053c9880a14ab355"
-  integrity sha512-fVOp2A8MaIOhgLJsh9jk5zwNlZdVKZT7FyOMrBfncO6hyloKqumtKbVuKcbScaS7zrQyA1uZQJiZT6qhKwApGw==
+"@vkontakte/icons@1.141.1":
+  version "1.141.1"
+  resolved "https://registry.yarnpkg.com/@vkontakte/icons/-/icons-1.141.1.tgz#2235deda5e657b7b136a582e40596b58692e32a3"
+  integrity sha512-bfhqqNGmdT4vPjpVeR4kKJ3SBt73sFHYnb3HT8+I4Cvcoa9thQsZTe5bHqhGCiLBrev1bD2/5YwAybU0ifAq2A==
   dependencies:
     es6-object-assign "1.1.0"
     svg-baker-runtime "1.4.7"
@@ -2902,10 +2902,10 @@
     require-module "^0.1.0"
     zip-a-folder "0.0.12"
 
-"@vkontakte/vkui@^4.5.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.8.0.tgz#a795b6b5a8610786ef956f715cd2d304277e58d3"
-  integrity sha512-ND6sWkyAkYiZuXPY/kG6qp2uuCSdarkjIJ22E+mVmmOquSYUmoU2i9UgOa8sosxCoxvI2ruZK3Qjqz0DCXyyQA==
+"@vkontakte/vkui@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.5.0.tgz#640b8a8593ff4415e1170058402edecc4a3d22f9"
+  integrity sha512-OYHTWWLD3my9Di58pvRU4r2/v0uf617Pub4ZZ2SVnmyS/gL0fVAo8VWu5qke+er8v1VxG+KU5ThT+s4I4tbT4g==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
