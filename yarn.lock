@@ -2902,6 +2902,11 @@
     require-module "^0.1.0"
     zip-a-folder "0.0.12"
 
+"@vkontakte/vkjs@0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@vkontakte/vkjs/-/vkjs-0.20.0.tgz#ddb9367649ab7e79754b9906c3f6e1960f624c37"
+  integrity sha512-bocEj9pcr6i6F0LN288xU3PX1MI4OJ3ZJXTa6kFx9IqEgk0CnoMtLAcuH2D7DzZAnc83DJCa/tuo9mT7XW035A==
+
 "@vkontakte/vkui@4.5.0":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.5.0.tgz#640b8a8593ff4415e1170058402edecc4a3d22f9"
