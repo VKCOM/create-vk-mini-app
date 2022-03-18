@@ -12,5 +12,4 @@ dist/*.hot-update.*
 .browserslistrc
 .stylelintrc
 .gitignore
-package-lock.json
 *.log
