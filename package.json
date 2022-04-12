@@ -31,7 +31,7 @@
     "@vkontakte/icons": "1.141.1",
     "@vkontakte/vk-miniapps-deploy": "0.0.25",
     "@vkontakte/vkjs": "0.20.0",
-    "@vkontakte/vkui": "4.5.0",
+    "@vkontakte/vkui": "4.28.1",
     "babel-eslint": "^10.1.0",
     "chalk": "^4.1.0",
     "eruda": "^2.4.1",
