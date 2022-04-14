@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot } from '@vkontakte/vkui';
+import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
 
 const App = () => {
+	const [scheme, setScheme] = useState('bright_light')
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
@@ -14,11 +15,10 @@ const App = () => {
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
 			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
+				setScheme(data.scheme)
 			}
 		});
+
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
@@ -32,14 +32,20 @@ const App = () => {
 	};
 
 	return (
-		<AdaptivityProvider>
-			<AppRoot>
-				<View activePanel={activePanel} popout={popout}>
-					<Home id='home' fetchedUser={fetchedUser} go={go} />
-					<Persik id='persik' go={go} />
-				</View>
-			</AppRoot>
-		</AdaptivityProvider>
+		<ConfigProvider scheme={scheme}>
+			<AdaptivityProvider>
+				<AppRoot>
+					<SplitLayout popout={popout}>
+						<SplitCol>
+							<View activePanel={activePanel}>
+								<Home id='home' fetchedUser={fetchedUser} go={go} />
+								<Persik id='persik' go={go} />
+							</View>
+						</SplitCol>
+					</SplitLayout>
+				</AppRoot>
+			</AdaptivityProvider>
+		</ConfigProvider>
 	);
 }
 
