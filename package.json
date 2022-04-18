@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/create-vk-mini-app",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "description": "VK Mini Apps Boilerplate",
   "repository": "https://github.com/VKCOM/create-vk-mini-app",
   "homepage": "https://vk.com/dev/vk_apps_docs",
@@ -12,7 +12,7 @@
     "create": "node ./bin/create-vk-mini-app.js"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=12.0.0"
   },
   "keywords": [],
   "author": {
@@ -28,26 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@vkontakte/icons": "1.141.1",
-    "@vkontakte/vk-miniapps-deploy": "0.0.25",
-    "@vkontakte/vkjs": "0.20.0",
-    "@vkontakte/vkui": "4.28.1",
-    "babel-eslint": "^10.1.0",
-    "chalk": "^4.1.0",
-    "eruda": "^2.4.1",
-    "eruda-code": "^2.0.0",
-    "eruda-dom": "^2.0.0",
-    "fs-extra": "^9.1.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "react-hot-loader": "^4.13.0",
-    "react-scripts": "^4.0.3"
-  },
-  "resolutions": {
-    "react-scripts/webpack-dev-server/yargs/yargs-parser": ">=18.1.2"
+    "chalk": "4.1.0",
+    "fs-extra": "9.1.0"
   }
 }
