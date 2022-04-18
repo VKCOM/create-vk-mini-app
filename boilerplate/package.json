@@ -1,9 +1,6 @@
 {
     "name": "mini-app",
     "version": "0.0.0",
-    "bin": {
-        "create-vk-mini-app": "./bin/create-vk-mini-app.js"
-    },
     "scripts": {
         "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
         "build": "react-scripts build",
