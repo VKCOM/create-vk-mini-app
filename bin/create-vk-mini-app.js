@@ -7,6 +7,7 @@ const { execSync } = require('child_process');
 
 const { modifyPackageJson } = require('./helpers')
 
+const packageRoot = path.join(__dirname, '..');
 const miniAppDirectory = process.argv[2] ? process.argv[2] : 'mini-app';
 const showHelp = ~process.argv.indexOf('--help');
 const useZeit = ~process.argv.indexOf('--zeit');
@@ -22,15 +23,18 @@ console.log('🎬 Creating project...');
 fs.mkdirSync(miniAppDirectory);
 
 console.log('⏱ Copying VK Mini App source and configuration files..');
-fs.copySync(path.join(__dirname, '..', 'boilerplate'), miniAppDirectory);
+fs.copySync(path.join(packageRoot, 'boilerplate'), miniAppDirectory);
+fs.copySync(path.join(packageRoot, 'README.md'), path.join(miniAppDirectory, 'README.md'));
 
 if (useZeit) {
-	fs.copySync(path.join(__dirname, '..', 'zeit', 'now.json'), miniAppDirectory);
+	fs.copySync(
+		path.join(packageRoot, 'zeit', 'now.json'),
+		path.join(miniAppDirectory, 'now.json'),
+	);
 }
 
 console.log(`🖼 VK Mini App source and configuration files are copied`);
 
-const packageJsonPath = path.join(__dirname, miniAppDirectory, 'package.json');
 const scriptsToAdd = {};
 
 if (useZeit) {
@@ -38,6 +42,8 @@ if (useZeit) {
 }
 
 if (Object.keys(scriptsToAdd).length) {
+	const packageJsonPath = path.join(miniAppDirectory, 'package.json');
+
 	modifyPackageJson(packageJsonPath, function(packageJson) {
 		packageJson['scripts'] = {
 			...packageJson['scripts'],
