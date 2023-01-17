@@ -7,18 +7,11 @@ import Home from './panels/Home';
 import Persik from './panels/Persik';
 
 const App = () => {
-	const [scheme, setScheme] = useState('bright_light')
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				setScheme(data.scheme)
-			}
-		});
-
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
@@ -32,7 +25,7 @@ const App = () => {
 	};
 
 	return (
-		<ConfigProvider scheme={scheme}>
+		<ConfigProvider>
 			<AdaptivityProvider>
 				<AppRoot>
 					<SplitLayout popout={popout}>
