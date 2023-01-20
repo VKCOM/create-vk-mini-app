@@ -9,7 +9,7 @@ import './Persik.css';
 const Persik = props => (
 	<Panel id={props.id}>
 		<PanelHeader
-			left={<PanelHeaderBack onClick={props.go} data-to="home"/>}
+			before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
 		>
 			Persik
 		</PanelHeader>
