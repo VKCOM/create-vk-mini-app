@@ -27,7 +27,7 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
-        "react-hot-loader": "^4.13.0",
+        "react-hot-loader": "^4.13.1",
         "react-scripts": "^5.0.1"
     },
     "resolutions": {
