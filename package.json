@@ -29,6 +29,6 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "4.1.0",
-    "fs-extra": "9.1.0"
+    "fs-extra": "11.1.1"
   }
 }
