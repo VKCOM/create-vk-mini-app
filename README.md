@@ -7,7 +7,7 @@
 ### With NPX
 
 ```bash
-npx @vkontakte/create-vk-mini-app [app-directory-name] [options]
+npx @vkontakte/create-vk-mini-app@latest [app-directory-name] [options]
 ```
 [NPX](https://github.com/npm/npx) allows you to always use the **latest** version of the package without a global installation.
 
