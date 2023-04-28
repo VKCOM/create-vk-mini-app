@@ -6,6 +6,7 @@
   "homepage": "https://vk.com/dev/vk_apps_docs",
   "main": "bin/create-vk-mini-app.js",
   "bin": {
+    "publish": "npm publish --access=public",
     "create-vk-mini-app": "./bin/create-vk-mini-app.js"
   },
   "scripts": {
