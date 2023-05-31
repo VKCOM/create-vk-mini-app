@@ -31,7 +31,7 @@ if (needHelp) {
 console.log('🎬 Creating project...');
 fs.mkdirSync(miniAppDirectory);
 
-const template = useTemplate && getArgumentValueAt(templateIndex);
+const template = useTemplate && getArgumentValueAt(templateIndex, 'template');
 
 if (template && !templates.has(template)) {
 	showErrorWithHelp('Wrong template type:', template);

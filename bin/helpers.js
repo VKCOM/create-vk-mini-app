@@ -18,26 +18,28 @@ function showHelp() {
   console.error(`🖖 Usage:
 1️⃣ Create VK Mini App with @vkontakte/vk-miniapps-deploy deploy: ${chalk.bold.green('create-vk-mini-app')} ${chalk.bold.cyan('[<app-directory-name>] [--template=<template-type>]')}
 2️⃣ Create VK Mini App with Zeit deploy: ${chalk.bold.green('create-vk-mini-app')} ${chalk.bold.cyan('[<app-directory-name>]')} ${chalk.bold.green('--zeit')} ${chalk.bold.cyan('[--template=<template-type>]')}
-   
+
 Template types:
   1) ${chalk.bold.cyan('javascript')}
   2) ${chalk.bold.cyan('typescript')}`);
 }
 
 /**
- * 
- * @param {number} index 
+ *
+ * @param {number} index
  */
-function getArgumentValueAt(index) {
+function getArgumentValueAt(index, argumentName) {
   let [, argValue] = process.argv[index].split('=');
 
   if (!argValue) {
-    if (process.argv[index + 1]?.startsWith('--')) {
-      showHelp();
+    const nextArg = process.argv[index + 1];
+
+    if (!nextArg || nextArg.startsWith('--')) {
+      showErrorWithHelp(`Missing value of argument${argumentName && ` --${argumentName}`}`);
       process.exit(1);
     }
 
-    argValue = process.argv[index + 1];
+    argValue = nextArg;
   }
 
   return argValue;
