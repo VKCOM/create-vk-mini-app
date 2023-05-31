@@ -9,6 +9,10 @@ function modifyPackageJson(path, cb) {
   fs.writeFileSync(path, JSON.stringify(modifiedPackageJson, 0, 4));
 }
 
+/**
+ *
+ * @param  {string[]} args
+ */
 function showErrorWithHelp(...args) {
   console.error(`\n🤬 ${chalk.bold.red(args.join(' '))} \n`);
   showHelp();
@@ -27,6 +31,9 @@ Template types:
 /**
  *
  * @param {number} index
+ * @param {string} argumentName
+ *
+ * @returns {string} Argument value
  */
 function getArgumentValueAt(index, argumentName) {
   let [, argValue] = process.argv[index].split('=');

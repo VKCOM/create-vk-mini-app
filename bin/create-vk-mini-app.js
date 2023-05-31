@@ -3,14 +3,14 @@
 const fs = require('fs-extra');
 const path = require('path');
 const { execSync } = require('child_process');
-const { modifyPackageJson, showHelp, getArgumentValueAt, showErrorWithHelp } = require('./helpers')
+const { modifyPackageJson, showHelp, getArgumentValueAt, showErrorWithHelp } = require('./helpers');
 
 const packageRoot = path.join(__dirname, '..');
 
 const JAVASCRIPT_TEMPLATE = 'javascript';
 const TYPESCRIPT_TEMPLATE = 'typescript';
 
-const templates = new Set([JAVASCRIPT_TEMPLATE, TYPESCRIPT_TEMPLATE])
+const templates = new Set([JAVASCRIPT_TEMPLATE, TYPESCRIPT_TEMPLATE]);
 
 const needHelp = ~process.argv.indexOf('--help');
 const useZeit = ~process.argv.indexOf('--zeit');
