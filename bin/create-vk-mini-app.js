@@ -2,28 +2,45 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('chalk');
 const { execSync } = require('child_process');
-
-const { modifyPackageJson } = require('./helpers')
+const { modifyPackageJson, showHelp, getArgumentValueAt, showErrorWithHelp } = require('./helpers')
 
 const packageRoot = path.join(__dirname, '..');
-const miniAppDirectory = process.argv[2] ? process.argv[2] : 'mini-app';
-const showHelp = ~process.argv.indexOf('--help');
+
+const JAVASCRIPT_TEMPLATE = 'javascript';
+const TYPESCRIPT_TEMPLATE = 'typescript';
+
+const templates = new Set([JAVASCRIPT_TEMPLATE, TYPESCRIPT_TEMPLATE])
+
+const needHelp = ~process.argv.indexOf('--help');
 const useZeit = ~process.argv.indexOf('--zeit');
 
-if (showHelp) {
-	console.error(`🖖 Usage:
-1️⃣ Create VK Mini App with @vkontakte/vk-miniapps-deploy deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name>')}
-2️⃣ Create VK Mini App with Zeit deploy: ${chalk.bold.green('create-vk-mini-app <app-directory-name> --zeit')}`);
+const miniAppDirectory = process.argv[2] && !process.argv[2].startsWith('--')
+	? process.argv[2]
+	: 'mini-app';
+
+const templateIndex = process.argv.indexOf('--template')
+const useTemplate = ~templateIndex;
+
+
+if (needHelp) {
+	showHelp();
 	process.exit(1);
 }
 
 console.log('🎬 Creating project...');
 fs.mkdirSync(miniAppDirectory);
 
+const template = useTemplate && getArgumentValueAt(templateIndex);
+
+if (template && !templates.has(template)) {
+	showErrorWithHelp('Wrong template type:', template);
+	process.exit(1);
+}
+
 console.log('⏱ Copying VK Mini App source and configuration files..');
-fs.copySync(path.join(packageRoot, 'boilerplate'), miniAppDirectory);
+
+fs.copySync(path.join(packageRoot, 'templates', template || JAVASCRIPT_TEMPLATE), miniAppDirectory);
 fs.copySync(path.join(packageRoot, 'README.md'), path.join(miniAppDirectory, 'README.md'));
 
 if (useZeit) {
@@ -55,12 +72,13 @@ if (Object.keys(scriptsToAdd).length) {
 }
 
 console.log('⏱ Installing project dependencies — it might take a few minutes..');
+
 try {
 	execSync(`cd ${miniAppDirectory} && npm ci`);
 } catch (npmErr) {
 	console.error(`😳 npm error:\n${npmErr}`);
 	process.exit(1);
 }
-console.log('✅ Dependencies are installed');
 
+console.log('✅ Dependencies are installed');
 console.log(`✌️ VK Mini App is ready to start in ${miniAppDirectory} folder. \n🧐 Check README.MD for brief instructrions.\n💻 Happy Coding!`)
