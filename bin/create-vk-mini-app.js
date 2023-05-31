@@ -19,7 +19,7 @@ const miniAppDirectory = process.argv[2] && !process.argv[2].startsWith('--')
 	? process.argv[2]
 	: 'mini-app';
 
-const templateIndex = process.argv.indexOf('--template')
+const templateIndex = process.argv.indexOf('--template');
 const useTemplate = ~templateIndex;
 
 
@@ -81,4 +81,4 @@ try {
 }
 
 console.log('✅ Dependencies are installed');
-console.log(`✌️ VK Mini App is ready to start in ${miniAppDirectory} folder. \n🧐 Check README.MD for brief instructrions.\n💻 Happy Coding!`)
+console.log(`✌️ VK Mini App is ready to start in ${miniAppDirectory} folder. \n🧐 Check README.MD for brief instructrions.\n💻 Happy Coding!`);
