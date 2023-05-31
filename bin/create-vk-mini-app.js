@@ -25,11 +25,8 @@ const useTemplate = ~templateIndex;
 
 if (needHelp) {
 	showHelp();
-	process.exit(1);
+	process.exit(0);
 }
-
-console.log('🎬 Creating project...');
-fs.mkdirSync(miniAppDirectory);
 
 const template = useTemplate && getArgumentValueAt(templateIndex, 'template');
 
@@ -38,6 +35,8 @@ if (template && !templates.has(template)) {
 	process.exit(1);
 }
 
+console.log('🎬 Creating project...');
+fs.mkdirSync(miniAppDirectory);
 console.log('⏱ Copying VK Mini App source and configuration files..');
 
 fs.copySync(path.join(packageRoot, 'templates', template || JAVASCRIPT_TEMPLATE), miniAppDirectory);
