@@ -20,6 +20,7 @@ jobs:
         run: yarn lint
   check_script:
     runs-on: ${{ matrix.os }}
+    if: ${{ success() && contains(github.base_ref, 'master') }}
     needs: lint
     strategy:
       matrix:
