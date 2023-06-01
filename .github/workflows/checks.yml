@@ -16,7 +16,7 @@ jobs:
           cache: yarn
           registry-url: 'https://registry.npmjs.org'
       - name: Install Node.js dependencies
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: yarn install --immutable --immutable-cache --check-cache --network-timeout 100000
       - name: Lint code
         run: yarn lint
   check_script:
