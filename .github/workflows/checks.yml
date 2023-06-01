@@ -14,14 +14,12 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          registry-url: 'https://registry.npmjs.org'
       - name: Install Node.js dependencies
         run: rm yarn.lock && yarn install
       - name: Lint code
         run: yarn lint
   check_script:
     runs-on: ${{ matrix.os }}
-    if: ${{ success() && contains(github.base_ref, 'master') }}
     needs: lint
     strategy:
       matrix:
@@ -35,7 +33,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-          registry-url: 'https://registry.npmjs.org'
       - name: Install Node.js dependencies
         run: npm install
       - name: Create Mini App with NodeJS ${{ matrix.node }} on ${{ matrix.os }}
