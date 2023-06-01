@@ -20,8 +20,12 @@ function showErrorWithHelp(...args) {
 
 function showHelp() {
   console.error(`🖖 Usage:
-1️⃣ Create VK Mini App with @vkontakte/vk-miniapps-deploy deploy: ${chalk.bold.green('create-vk-mini-app')} ${chalk.bold.cyan('[<app-directory-name>] [--template=<template-type>]')}
-2️⃣ Create VK Mini App with Zeit deploy: ${chalk.bold.green('create-vk-mini-app')} ${chalk.bold.cyan('[<app-directory-name>]')} ${chalk.bold.green('--zeit')} ${chalk.bold.cyan('[--template=<template-type>]')}
+1️⃣ Create VK Mini App with @vkontakte/vk-miniapps-deploy deploy: ${chalk.bold.green(
+    'create-vk-mini-app',
+  )} ${chalk.bold.cyan('[<app-directory-name>] [--template=<template-type>]')}
+2️⃣ Create VK Mini App with Zeit deploy: ${chalk.bold.green('create-vk-mini-app')} ${chalk.bold.cyan(
+    '[<app-directory-name>]',
+  )} ${chalk.bold.green('--zeit')} ${chalk.bold.cyan('[--template=<template-type>]')}
 
 Template types:
   1) ${chalk.bold.cyan('javascript')}
@@ -52,10 +56,9 @@ function getArgumentValueAt(index, argumentName) {
   return argValue;
 }
 
-
 module.exports = {
   modifyPackageJson,
   showHelp,
   showErrorWithHelp,
   getArgumentValueAt,
-}
+};
