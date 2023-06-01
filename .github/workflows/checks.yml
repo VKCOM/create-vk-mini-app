@@ -14,18 +14,15 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          always-auth: true
           registry-url: 'https://registry.npmjs.org'
+      - name: Install Node.js dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
       - name: Lint code
-        run: |
-          yarn
-          yarn lint
+        run: yarn lint
   check_script:
     runs-on: ${{ matrix.os }}
     if: ${{ success() && contains(github.base_ref, 'master') }}
     needs: lint
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -38,7 +35,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-          always-auth: true
           registry-url: 'https://registry.npmjs.org'
       - name: Create Mini App with NodeJS ${{ matrix.node }} on ${{ matrix.os }}
         run: npm run create ./mini-app -- --template typescript
