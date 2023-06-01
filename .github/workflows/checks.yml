@@ -15,7 +15,9 @@ jobs:
           node-version: 16
           cache: yarn
       - name: Lint code
-        run: yarn && yarn lint
+        run: |
+          yarn
+          yarn lint
   check_script:
     runs-on: ${{ matrix.os }}
     if: ${{ success() && contains(github.base_ref, 'master') }}
