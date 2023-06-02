@@ -9,7 +9,8 @@
     "create-vk-mini-app": "./bin/create-vk-mini-app.js"
   },
   "scripts": {
-    "create": "node ./bin/create-vk-mini-app.js"
+    "create": "node ./bin/create-vk-mini-app.js",
+    "lint": "eslint ./bin --ext=js"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -30,5 +31,13 @@
   "dependencies": {
     "chalk": "4.1.0",
     "fs-extra": "9.1.0"
+  },
+  "devDependencies": {
+    "@vkontakte/eslint-plugin": "^1.1.0",
+    "@vkontakte/prettier-config": "^0.1.0",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
   }
 }
