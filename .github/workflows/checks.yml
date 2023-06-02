@@ -1,0 +1,39 @@
+name: 'Checks'
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Install Node.js dependencies
+        run: rm yarn.lock && yarn install
+      - name: Lint code
+        run: yarn lint
+  check_script:
+    runs-on: ${{ matrix.os }}
+    if: ${{ success() && contains(github.base_ref, 'master') }}
+    needs: lint
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [12.x, 14.x, 16.x, latest]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Create Mini App with NodeJS ${{ matrix.node }} on ${{ matrix.os }}
+        run: npx https://github.com/VKCOM/create-vk-mini-app#${{ github.ref_name }} ./mini-app -- --template typescript
