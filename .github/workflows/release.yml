@@ -1,0 +1,56 @@
+name: 'Release'
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Choose release type'
+        required: true
+        default: patch
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+jobs:
+  release:
+    env:
+      RELEASE_VERSION:
+      RELEASE_VERSION_REF:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+          always-auth: true
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Calculate release version
+        env:
+          RELSEASE_TYPE: ${{ github.event.inputs.release_type }}
+        run: |
+          yarn
+          echo RELEASE_VERSION=$(yarn --silent release_version) >> $GITHUB_ENV
+          echo RELEASE_VERSION_REF=$(yarn --silent release_version | tr '.' '_') >> $GITHUB_ENV
+
+      - name: Bump to release version ${{ env.RELEASE_VERSION }}
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }} --no-commit-hooks
+
+      - name: Create Release Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+          commit-message: Release v.${{ env.RELEASE_VERSION }}
+          committer: GitHub Action <actions@github.com>
+          author: GitHub Action <actions@github.com>
+          branch: release_v_${{ env.RELEASE_VERSION_REF }}
+          delete-branch: true
+          base: master
+          title: Release v${{ env.RELEASE_VERSION }}
