@@ -39,6 +39,9 @@ jobs:
           echo RELEASE_VERSION=$(yarn --silent release_version) >> $GITHUB_ENV
           echo RELEASE_VERSION_REF=$(yarn --silent release_version | tr '.' '_') >> $GITHUB_ENV
 
+      - name: Bump to release version ${{ env.RELEASE_VERSION }}
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }} --no-commit-hooks
+
       - name: Create Release Request
         uses: peter-evans/create-pull-request@v5
         with:
