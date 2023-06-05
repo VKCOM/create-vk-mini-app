@@ -1,20 +1,37 @@
 name: 'Publish'
 
 on:
-  push:
+  pull_request:
     branches:
-      - master
+      - main
+    types: [closed]
   workflow_dispatch:
     inputs:
       version:
-        description: 'version (without v prefix)'
+        description: version (without v prefix)
         required: true
+      dry_run:
+        description: run without publish
+        type: boolean
+        default: false
 
 jobs:
-  pre-publish:
+  on_release:
+    if: ${{ github.event.pull_request.merged && contains(github.head_ref, 'release_v_') }}
+    runs-on: ubuntu-latest
+    outputs:
+      SUCCESS: ${{ steps.release.outputs.success }}
+    steps:
+      - id: release
+        run: echo "success=1" >> "$GITHUB_OUTPUT"
+  on_manual:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.version }}
+    outputs:
+      SUCCESS: ${{ steps.manual.outputs.success }}
     steps:
+      - id: manual
+        run: echo "success=1" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
@@ -38,7 +55,8 @@ jobs:
           branch: ${{ github.ref }}
   publish:
     runs-on: ubuntu-latest
-    if: ${{ success() }}
+    if: ${{ needs.on_release.outputs.SUCCESS || needs.on_manual.outputs.SUCCESS }}
+    needs: [on_release, on_manual]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -52,6 +70,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publushing release
+        if: ${{ !github.event.inputs.dry_run }}
         run: yarn publish --access public --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
