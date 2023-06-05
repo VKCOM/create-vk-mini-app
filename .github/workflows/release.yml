@@ -32,7 +32,7 @@ jobs:
           always-auth: true
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Calculate release vesion
+      - name: Calculate release version
         env:
           RELSEASE_TYPE: ${{ github.event.inputs.release_type }}
         run: |
