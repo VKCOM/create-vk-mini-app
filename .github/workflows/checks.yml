@@ -16,8 +16,10 @@ jobs:
           cache: yarn
       - name: Install Node.js dependencies
         run: rm yarn.lock && yarn install
-      - name: Lint code
-        run: yarn lint
+      - name: Lint Prettier
+        run: yarn lint:prettier
+      - name: Lint ESLint
+        run: yarn lint:eslint
   check_script:
     runs-on: ${{ matrix.os }}
     if: ${{ success() && contains(github.base_ref, 'master') }}
