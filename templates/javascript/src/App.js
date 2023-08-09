@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {
-  View,
-  ScreenSpinner,
-  AdaptivityProvider,
-  AppRoot,
-  ConfigProvider,
-  SplitLayout,
-  SplitCol,
-} from '@vkontakte/vkui';
+import { View, ScreenSpinner, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
@@ -33,20 +25,14 @@ const App = () => {
   };
 
   return (
-    <ConfigProvider>
-      <AdaptivityProvider>
-        <AppRoot>
-          <SplitLayout popout={popout}>
-            <SplitCol>
-              <View activePanel={activePanel}>
-                <Home id="home" fetchedUser={fetchedUser} go={go} />
-                <Persik id="persik" go={go} />
-              </View>
-            </SplitCol>
-          </SplitLayout>
-        </AppRoot>
-      </AdaptivityProvider>
-    </ConfigProvider>
+    <SplitLayout popout={popout}>
+      <SplitCol>
+        <View activePanel={activePanel}>
+          <Home id="home" fetchedUser={fetchedUser} go={go} />
+          <Persik id="persik" go={go} />
+        </View>
+      </SplitCol>
+    </SplitLayout>
   );
 };
 
