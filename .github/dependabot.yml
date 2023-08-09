@@ -1,21 +1,21 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     allow:
-      - dependency-type: "direct"
+      - dependency-type: 'direct'
     reviewers:
-      - "VKCOM/vk-sec"
-      - "VKCOM/vk-miniapp"
+      - 'VKCOM/vk-sec'
+      - 'VKCOM/vk-miniapp'
 
-  - package-ecosystem: "npm"
-    directory: "/boilerplate"
+  - package-ecosystem: 'npm'
+    directory: '/boilerplate'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     allow:
-      - dependency-type: "direct"
+      - dependency-type: 'direct'
     reviewers:
-      - "VKCOM/vk-sec"
-      - "VKCOM/vk-miniapp"
+      - 'VKCOM/vk-sec'
+      - 'VKCOM/vk-miniapp'

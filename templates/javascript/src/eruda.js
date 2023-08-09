@@ -6,4 +6,4 @@ eruda.init();
 eruda.add(erudaCode);
 eruda.add(erudaDom);
 
-export default eruda
+export default eruda;
