@@ -7,29 +7,25 @@ import {
 } from '@vkontakte/vkui';
 import type { UseAdaptivity } from '@vkontakte/vk-bridge-react';
 
-export const transformVKBridgeAdaptivity = (bridgeAdaptivity: UseAdaptivity): AdaptivityProps => {
-  let viewWidth;
-  let viewHeight;
-  let sizeX;
-  let sizeY;
-
-  if (bridgeAdaptivity.type === 'adaptive') {
-    const { viewportWidth, viewportHeight } = bridgeAdaptivity;
-    viewWidth = getViewWidthByViewportWidth(viewportWidth);
-    viewHeight = getViewHeightByViewportHeight(viewportHeight);
-  } else if (
-    bridgeAdaptivity.type === 'force_mobile' ||
-    bridgeAdaptivity.type === 'force_mobile_compact'
-  ) {
-    viewWidth = ViewWidth.MOBILE;
-    sizeX = SizeType.COMPACT;
-
-    if (bridgeAdaptivity.type === 'force_mobile_compact') {
-      sizeY = SizeType.COMPACT;
-    } else {
-      sizeY = SizeType.REGULAR;
-    }
+export const transformVKBridgeAdaptivity = ({
+  type,
+  viewportWidth,
+  viewportHeight,
+}: UseAdaptivity): AdaptivityProps => {
+  switch (type) {
+    case 'adaptive':
+      return {
+        viewWidth: getViewWidthByViewportWidth(viewportWidth),
+        viewHeight: getViewHeightByViewportHeight(viewportHeight),
+      };
+    case 'force_mobile':
+    case 'force_mobile_compact':
+      return {
+        viewWidth: ViewWidth.MOBILE,
+        sizeX: SizeType.COMPACT,
+        sizeY: type === 'force_mobile_compact' ? SizeType.COMPACT : SizeType.REGULAR,
+      };
+    default:
+      return {};
   }
-
-  return { viewWidth, viewHeight, sizeX, sizeY };
 };
