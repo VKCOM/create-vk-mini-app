@@ -1,46 +1,29 @@
+const path = require('path');
+
 module.exports = {
-  env: {
-    commonjs: true,
-    es2021: true,
-    node: true,
-  },
-  plugins: ['prettier'],
-  extends: ['plugin:@vkontakte/eslint-plugin/default', 'prettier'],
-  overrides: [],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    requireConfigFile: false,
-  },
+  root: true,
+  extends: ['plugin:@vkontakte/eslint-plugin/typescript', 'plugin:import/recommended', 'prettier'],
+  overrides: [
+    {
+      files: '**/*.{ts,tsx}',
+      parserOptions: {
+        project: path.join(__dirname, 'tsconfig.json'),
+      },
+    },
+  ],
   rules: {
-    'prettier/prettier': 'error',
-    'import/no-duplicates': 'off',
-    'padding-line-between-statements': [
-      'error',
-      {
-        blankLine: 'always',
-        prev: ['block-like', 'multiline-expression', 'let', 'const', 'debugger', 'cjs-import'],
-        next: '*',
-      },
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: [
-          'block-like',
-          'multiline-expression',
-          'let',
-          'const',
-          'debugger',
-          'return',
-          'continue',
-        ],
-      },
-      {
-        blankLine: 'any',
-        prev: ['singleline-let', 'singleline-const'],
-        next: ['singleline-let', 'singleline-const'],
-      },
-      { blankLine: 'always', prev: 'cjs-import', next: '*' },
-      { blankLine: 'any', prev: 'cjs-import', next: 'cjs-import' },
-    ],
+    'import/named': 'off',
+    'import/no-unresolved': 'off',
+    'no-shadow': 'off',
+    'guard-for-in': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/array-type': 'off',
+    '@typescript-eslint/prefer-readonly': 'off',
+    '@typescript-eslint/no-magic-numbers': 'off',
+    '@typescript-eslint/no-extraneous-class': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
   },
 };
