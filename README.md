@@ -76,6 +76,6 @@ create-vk-mini-app [app-directory-name] [options]
 
 5. Установите изменный пакет себе - `yarn link`.
 
-6. И запустите, чтобы протестировать изменения - `create-vk-mini-app [app-directory-name] [options]`.
+6. И запустите, чтобы протестировать изменения - `create-vk-mini-app`.
 
 7. Отправьте мр нам на проверку.
