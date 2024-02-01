@@ -68,12 +68,14 @@ create-vk-mini-app [app-directory-name] [options]
 
 1. Сделайте форк репозитория и склонируйте его.
 
-2. Установите зависимости -`yarn`
+2. Установите зависимости -`yarn`.
 
 3. Внесите изменения
 
-4. Соберите - `yarn run build`
+4. Соберите - `yarn run build`.
 
-5. Установите изменный пакет себе - `yarn link`
+5. Установите изменный пакет себе - `yarn link`.
 
-6. И запустите, чтобы протестировать изменения - `create-vk-mini-app [app-directory-name] [options]`
+6. И запустите, чтобы протестировать изменения - `create-vk-mini-app [app-directory-name] [options]`.
+
+7. Отправьте мр нам на проверку.
