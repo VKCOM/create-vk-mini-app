@@ -8,7 +8,7 @@
 Запустите ваш мини апп
 
 ```sh
- yarn run dev
+ yarn start
 ```
 
 Перейдите на [devportal](https://dev.vk.com/ru) или в [управление](https://vk.com/apps?act=manage) и создайте новый мини апп.  
