@@ -12,6 +12,8 @@
 
 - Поддержка последних версий библиотек + typescript.
 
+- Удобное интерактивное меню для настройки проекта.
+
 - Бесплатный хостинг вашего приложения при помощи [vk-mini-apps-deploy](https://dev.vk.com/ru/mini-apps/development/hosting).
 
 ## Установка и использование
@@ -34,29 +36,59 @@ npm init @vkontakte/vk-mini-app@lastest [app-directory-name] [options]
 npx @vkontakte/create-vk-mini-app [app-directory-name] [options]
 ```
 
-### C глобальной установкой пакета
+## Опции
 
-Используя yarn
+<table>
+  <tr>
+    <td width="200px"><strong>--typescript</strong></td>
+    <td>Выбирает пример на typescript</td>
+  </tr>
+  <tr>
+    <td><strong>--projectName</strong></td>
+    <td>Выбирает имя, которое будет указано в package.json. Если параметр не передан, по умолчанию будет взято название директории</td>
+  </tr>
+  <tr>
+    <td><strong>--t</strong> или <strong>--template</strong></td>
+    <td>Выбирает структурный шаблон</td>
+  </tr>
+</table>
+
+### Пример использования дополнительных опций
 
 ```bash
-yarn global add @vkontakte/create-vk-mini-app
+yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkapp-router-bridge-ui
 ```
 
-или npm
+создаст папку “mini-app” c примером “vkapp-ui” реализованном на ts
 
 ```bash
-npm install --global @vkontakte/create-vk-mini-app
+yarn create  @vkontakte/vk-mini-app . --template=vkapp-bridge-ui
 ```
 
-После установки
+создаст пример “vkapp-bridge-ui” на js в текущей дериктории
 
-```bash
-create-vk-mini-app [app-directory-name] [options]
-```
+## Виды шаблонов
+
+<table>
+  <tr>
+    <td width="220px"><strong>vkapp-router-bridge-ui</strong></td>
+    <td>вариант мини-аппа со встроенным роутером, поддерживающим анимации vkui, подключенной библиотекой vk-bridge и интерфейсом vkui</td>
+  </tr>
+  <tr>
+    <td><strong>vkapp-bridge-ui</strong></td>
+    <td>вариант мини-аппа со встроенной библиотекой vk bridge и vkui интерфейсом</td>
+  </tr>
+  <tr>
+    <td><strong>vkapp-ui</td>
+    <td>вариант веб приложения основанном на интерфейсе vkui, не является мини-аппом, так как в нем нет библиотеки vk bridge, отвечающей за связь с платформой</td>
+  </tr>
+</table>
 
 ## Полезные ссылки
 
-- [документация библиотеки]().
+- [документация VKUI](https://vkcom.github.io/VKUI/).
+
+- [документация vk-mini-apps-router](https://dev.vk.com/libraries/router).
 
 - [Примеры мини приложений](https://dev.vk.com/ru/mini-apps/examples/shop).
 
@@ -70,7 +102,7 @@ create-vk-mini-app [app-directory-name] [options]
 
 2. Установите зависимости -`yarn`.
 
-3. Внесите изменения
+3. Внесите изменения.
 
 4. Соберите - `yarn run build`.
 
