@@ -9,14 +9,14 @@
     "create-vk-mini-app": "./bin/create-vk-mini-app.js"
   },
   "scripts": {
-    "build": "tsc && esbuild src/create-vk-mini-app.ts --bundle --platform=node --target=node16.2 --outfile=bin/create-vk-mini-app.js",
+    "build": "tsc && esbuild src/create-vk-mini-app.ts --bundle --platform=node --target=node18.0 --outfile=bin/create-vk-mini-app.js",
     "create": "node ./bin/create-vk-mini-app.js",
     "lint:eslint": "eslint ./src --ext=ts",
     "eslint:fix": "eslint ./src --ext=ts --fix",
     "lint:prettier": "prettier --check --ignore-unknown ."
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=18.0.0"
   },
   "keywords": [],
   "author": {
