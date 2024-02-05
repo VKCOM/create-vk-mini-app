@@ -1,10 +1,18 @@
-name: 'Publish'
+name: 'Publish (pre-release)'
 
 on:
   workflow_dispatch:
     inputs:
+      tag:
+        required: true
+        description: 'tag ("beta" or "alpha"):'
+        type: choice
+        default: 'beta'
+        options:
+          - beta
+          - alpha
       version:
-        description: 'version (without v prefix)'
+        description: 'version: x.y.z-beta.0 or x.y.z-alpha.0 (without "v")'
         required: true
 
 jobs:
@@ -26,14 +34,16 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Action"
-      - run: yarn version --new-version ${{ github.event.inputs.version }} --no-commit-hooks
+
+      - run: yarn version --new-version "${{ github.event.inputs.version }}" --no-commit-hooks
+
       - name: Pushing changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - name: Publushing release
-        run: yarn publish --access public --non-interactive
+      - name: Publishing release
+        run: yarn publish --access public --non-interactive --tag ${{ github.event.inputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}

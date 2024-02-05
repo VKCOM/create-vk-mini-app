@@ -36,6 +36,14 @@ npm init @vkontakte/vk-mini-app@lastest [app-directory-name] [options]
 npx @vkontakte/create-vk-mini-app [app-directory-name] [options]
 ```
 
+### Для Node js < 18.0.0
+
+Если вы используете Node js < 18.0.0 то вам нужен [create-vk-mini-app v1](README_v1.md).
+
+```bash
+npx @vkontakte/create-vk-mini-app@1 [app-directory-name] [options]
+```
+
 ## Опции
 
 <table>

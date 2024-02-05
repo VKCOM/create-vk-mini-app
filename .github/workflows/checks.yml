@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           cache: yarn
       - name: Install Node.js dependencies
         run: rm yarn.lock && yarn install
@@ -27,12 +27,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [12.x, 14.x, 16.x, latest]
+        node: [18.x, 20.x, latest]
     steps:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: npm
