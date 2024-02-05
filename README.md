@@ -1,71 +1,113 @@
-[<img width="134" src="https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg">](https://vk.com/services)
+# Create VK Mini App
 
-# Create VK Mini App [![npm][npm]][npm-url] [![deps][deps]][deps-url]
+Библиотека create-vk-mini-app — инструмент для быстрого создания и развертывания [мини-приложений](https://dev.vk.com/mini-apps/overview) Вконтакте
 
-## How to use
+## Ключевые особенности
 
-### With NPX
+- Cборка на [Vite](https://vitejs.dev/guide/).
 
-```bash
-npx @vkontakte/create-vk-mini-app@latest [app-directory-name] [options]
-```
+- Интеграция с [VKUI](https://github.com/VKCOM/VKUI) и [vk-miniapps-router](https://github.com/VKCOM/vk-mini-apps-router).
 
-[NPX](https://github.com/npm/npx) allows you to always use the **latest** version of the package without a global installation.
+- Конфигурации шаблонов под различные задачи.
 
-### With installing the package globally
+- Поддержка последних версий библиотек + typescript.
 
-Install the package globally via yarn
+- Удобное интерактивное меню для настройки проекта.
 
-```bash
-yarn global add @vkontakte/create-vk-mini-app
-```
+- Бесплатный хостинг вашего приложения при помощи [vk-mini-apps-deploy](https://dev.vk.com/ru/mini-apps/development/hosting).
 
-...or npm
+## Установка и использование
+
+### yarn
 
 ```bash
-npm install --global @vkontakte/create-vk-mini-app
+yarn create @vkontakte/vk-mini-app [app-directory-name] [options]
 ```
 
-and use as follows
+### npm
 
 ```bash
-create-vk-mini-app [app-directory-name] [options]
+npm init @vkontakte/vk-mini-app@lastest [app-directory-name] [options]
 ```
 
-This way is less recommended because you will have to update the package yourself.
+### npx
 
-### Options
+```bash
+npx @vkontakte/create-vk-mini-app [app-directory-name] [options]
+```
 
-Without `--zeit` and `--surge` options
+## Опции
 
-#### `--zeit`
+<table>
+  <tr>
+    <td width="200px"><strong>--typescript</strong></td>
+    <td>Выбирает пример на typescript</td>
+  </tr>
+  <tr>
+    <td><strong>--projectName</strong></td>
+    <td>Выбирает имя, которое будет указано в package.json. Если параметр не передан, по умолчанию будет взято название директории</td>
+  </tr>
+  <tr>
+    <td><strong>--t</strong> или <strong>--template</strong></td>
+    <td>Выбирает структурный шаблон</td>
+  </tr>
+</table>
 
-Vercel (Zeit) deploy
+### Пример использования дополнительных опций
 
-Firstly, you have to create Vercel account and connect it with your GitHub profile on [vercel.com](https://vercel.com)
+```bash
+yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkapp-router-bridge-ui
+```
 
-#### `--surge <surge-domain>`
+создаст папку “mini-app” c примером “vkapp-ui” реализованном на ts
 
-Surge deploy
+```bash
+yarn create  @vkontakte/vk-mini-app . --template=vkapp-bridge-ui
+```
 
-Firstly, you have to create Surge account and Surge-domain on [surge.sh](https://surge.sh)
+создаст пример “vkapp-bridge-ui” на js в текущей дериктории
 
-#### `--template <templat-type>`
+## Виды шаблонов
 
-Build with specific template (`typescript` or `javascript`)
+<table>
+  <tr>
+    <td width="220px"><strong>vkapp-router-bridge-ui</strong></td>
+    <td>вариант мини-аппа со встроенным роутером, поддерживающим анимации vkui, подключенной библиотекой vk-bridge и интерфейсом vkui</td>
+  </tr>
+  <tr>
+    <td><strong>vkapp-bridge-ui</strong></td>
+    <td>вариант мини-аппа со встроенной библиотекой vk bridge и vkui интерфейсом</td>
+  </tr>
+  <tr>
+    <td><strong>vkapp-ui</td>
+    <td>вариант веб приложения основанном на интерфейсе vkui, не является мини-аппом, так как в нем нет библиотеки vk bridge, отвечающей за связь с платформой</td>
+  </tr>
+</table>
 
-#### `--help`
+## Полезные ссылки
 
-Prints the synopsis and a list of options
+- [документация VKUI](https://vkcom.github.io/VKUI/).
 
-## How to start work with app
+- [документация vk-mini-apps-router](https://dev.vk.com/libraries/router).
 
-Go to created folder and run:
-`yarn start` or `npm start` to start dev server with hot reload on `localhost:10888`.
+- [Примеры мини приложений](https://dev.vk.com/ru/mini-apps/examples/shop).
 
-`yarn run build` or `npm run build` to build production bundle, with tree-shaking, uglify and all this modern fancy stuff.
+- [VK Mini Apps](https://vk.com/vkappsdev) — сообщество разработчиков мини-приложений ВКонтакте.
 
-[npm]: https://img.shields.io/npm/v/@vkontakte/create-vk-mini-app.svg
-[npm-url]: https://npmjs.com/package/@vkontakte/create-vk-mini-app
-[deps]: https://img.shields.io/david/vkcom/create-vk-mini-app.svg
-[deps-url]: https://david-dm.org/vkcom/create-vk-mini-app
+## Contributing
+
+Мы очень радуемся, когда пользователи библиотеки работают над её улучшением. Если вы захотите расширить базу примеров или улучшить cli интерфейс, то:
+
+1. Сделайте форк репозитория и склонируйте его.
+
+2. Установите зависимости -`yarn`.
+
+3. Внесите изменения.
+
+4. Соберите - `yarn run build`.
+
+5. Установите изменный пакет себе - `yarn link`.
+
+6. И запустите, чтобы протестировать изменения - `create-vk-mini-app`.
+
+7. Отправьте мр нам на проверку.
