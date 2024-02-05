@@ -9,8 +9,10 @@
     "create-vk-mini-app": "./bin/create-vk-mini-app.js"
   },
   "scripts": {
+    "build": "tsc && esbuild src/create-vk-mini-app.ts --bundle --platform=node --target=node16.2 --outfile=bin/create-vk-mini-app.js",
     "create": "node ./bin/create-vk-mini-app.js",
-    "lint:eslint": "eslint ./bin --ext=js",
+    "lint:eslint": "eslint ./src --ext=ts",
+    "eslint:fix": "eslint ./src --ext=ts --fix",
     "lint:prettier": "prettier --check --ignore-unknown ."
   },
   "engines": {
@@ -21,24 +23,27 @@
     "name": "VK",
     "url": "https://vk.com"
   },
-  "contributors": [
-    {
-      "name": "Gleb Vorontsov",
-      "email": "vorontsov.gleb@gmail.com",
-      "url": "https://vk.com/boy"
-    }
-  ],
   "license": "MIT",
   "dependencies": {
     "chalk": "4.1.0",
-    "fs-extra": "9.1.0"
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "@vkontakte/eslint-plugin": "^1.1.0",
     "@vkontakte/prettier-config": "^0.1.0",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8"
+    "esbuild": "^0.19.12",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "prettier": "^2.7.1",
+    "typescript": "^5.3.3"
   }
 }

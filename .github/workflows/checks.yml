@@ -37,4 +37,4 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - name: Create Mini App with NodeJS ${{ matrix.node }} on ${{ matrix.os }}
-        run: npx https://github.com/VKCOM/create-vk-mini-app#${{ github.head_ref }} ./mini-app -- --template typescript
+        run: npx https://github.com/VKCOM/create-vk-mini-app#${{ github.head_ref }} mini-app --typescript --template=vkapp-ui
