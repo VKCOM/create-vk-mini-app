@@ -13,7 +13,8 @@
     "create": "node ./bin/create-vk-mini-app.js",
     "lint:eslint": "eslint ./src --ext=ts",
     "eslint:fix": "eslint ./src --ext=ts --fix",
-    "lint:prettier": "prettier --check --ignore-unknown ."
+    "lint:prettier": "prettier --check --ignore-unknown .",
+    "prepublishOnly": "yarn build"
   },
   "engines": {
     "node": ">=18.0.0"
