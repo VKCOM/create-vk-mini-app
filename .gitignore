@@ -11,3 +11,6 @@ npm-debug.log*
 
 .vscode
 .idea
+
+/bin
+/bin/create-vk-mini-app.ts
