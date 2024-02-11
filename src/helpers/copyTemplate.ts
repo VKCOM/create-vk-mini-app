@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { Config } from '../types';
-import { getProjectName } from './getProjectName';
+import { getFullDirectoryName } from './getFullDirectoryName';
 
 function copyDir(srcDir: string, destDir: string) {
   fs.mkdirSync(destDir, { recursive: true });
@@ -38,13 +38,14 @@ export const copyTemplate = (config: Config, projectRoot: string) => {
   const templateDir = path.resolve(__filename, '../..', 'templates', config.lang, config.template);
 
   const files = fs.readdirSync(templateDir);
+
   for (const file of files.filter((f) => f !== 'package.json')) {
     writeFile(file, templateDir, projectRoot);
   }
 
   const pkg = JSON.parse(fs.readFileSync(path.join(templateDir, `package.json`), 'utf-8'));
 
-  pkg.name = config.packageName || getProjectName(config.directoryName);
+  pkg.name = config.projectName || getFullDirectoryName(config.directoryName);
 
   writeFile('package.json', templateDir, projectRoot, JSON.stringify(pkg, null, 2) + '\n');
 };

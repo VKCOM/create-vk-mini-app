@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import prompts from 'prompts';
-import { TEMPLATES_OPTIONS } from '../constants';
+import { TEMPLATES_OPTIONS, DEFAULT_TEMPLATE_NAME } from '../constants';
 import { findTemplatesByLang, onCancel } from '../helpers';
 import { PromptFunction } from '../types';
 
@@ -10,6 +10,9 @@ function isValidTemplateOption(template: string): template is keyof typeof TEMPL
 
 export const getTemplate: PromptFunction = async function (config) {
   const templatesNames = findTemplatesByLang(config.lang);
+  const defaultTemplateIndex = templatesNames.findIndex(
+    (templateName) => templateName === DEFAULT_TEMPLATE_NAME,
+  );
 
   const { template } = await prompts(
     {
@@ -21,7 +24,7 @@ export const getTemplate: PromptFunction = async function (config) {
               `"${config.template}" isn't a valid template. Please choose from below: `,
             )
           : chalk.white.bold('Select a template:'),
-      initial: 0,
+      initial: defaultTemplateIndex === -1 ? 0 : defaultTemplateIndex,
       choices: templatesNames.map((template) => {
         const templateConfig = isValidTemplateOption(template)
           ? TEMPLATES_OPTIONS[template]

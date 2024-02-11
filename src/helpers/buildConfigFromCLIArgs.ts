@@ -15,12 +15,12 @@ export function buildConfigFromCLIArgs(): Config {
   const argTargetDir = formatTargetDir(argv._[0]);
   const argTemplate = argv.template || argv.t;
   const argTypescript = argv.typescript;
-  const argPackageName = argv.projectName;
+  const argProjectName = argv.projectName;
 
   return {
     lang: argTypescript ? LANG.typescript : undefined,
     template: argTemplate,
-    packageName: argPackageName,
+    projectName: argProjectName,
     directoryName: argTargetDir,
   };
 }
