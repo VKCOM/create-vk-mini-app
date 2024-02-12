@@ -10,10 +10,9 @@
   },
   "scripts": {
     "build": "tsc && esbuild src/create-vk-mini-app.ts --bundle --platform=node --target=node18.0 --outfile=bin/create-vk-mini-app.js",
-    "create": "node ./bin/create-vk-mini-app.js",
     "lint:eslint": "eslint ./src --ext=ts",
-    "eslint:fix": "eslint ./src --ext=ts --fix",
     "lint:prettier": "prettier --check --ignore-unknown .",
+    "eslint:fix": "eslint ./src --ext=ts --fix",
     "prepublishOnly": "yarn build"
   },
   "engines": {
@@ -43,8 +42,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.1.6"
   }
 }

@@ -64,30 +64,30 @@ npx @vkontakte/create-vk-mini-app@1 [app-directory-name] [options]
 ### Пример использования дополнительных опций
 
 ```bash
-yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkapp-router-bridge-ui
+yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkui-bridge-router
 ```
 
-создаст папку “mini-app” c примером “vkapp-ui” реализованном на ts
+создаст папку “mini-app” c примером “vkui-bridge-router” реализованном на ts
 
 ```bash
-yarn create  @vkontakte/vk-mini-app . --template=vkapp-bridge-ui
+yarn create  @vkontakte/vk-mini-app . --template=vkui-bridge
 ```
 
-создаст пример “vkapp-bridge-ui” на js в текущей дериктории
+создаст пример “vkui-bridge” на js в текущей дериктории
 
 ## Виды шаблонов
 
 <table>
   <tr>
-    <td width="220px"><strong>vkapp-router-bridge-ui</strong></td>
+    <td width="220px"><strong>vkui-bridge-router</strong></td>
     <td>вариант мини-аппа со встроенным роутером, поддерживающим анимации vkui, подключенной библиотекой vk-bridge и интерфейсом vkui</td>
   </tr>
   <tr>
-    <td><strong>vkapp-bridge-ui</strong></td>
+    <td><strong>vkui-bridge</strong></td>
     <td>вариант мини-аппа со встроенной библиотекой vk bridge и vkui интерфейсом</td>
   </tr>
   <tr>
-    <td><strong>vkapp-ui</td>
+    <td><strong>vkui-only</td>
     <td>вариант веб приложения основанном на интерфейсе vkui, не является мини-аппом, так как в нем нет библиотеки vk bridge, отвечающей за связь с платформой</td>
   </tr>
 </table>
