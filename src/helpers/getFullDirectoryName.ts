@@ -1,5 +1,5 @@
 import path from 'node:path';
 
-export const getProjectName = (targetDir: string) => {
+export const getFullDirectoryName = (targetDir: string) => {
   return targetDir === '.' ? path.basename(path.resolve()) : targetDir;
 };

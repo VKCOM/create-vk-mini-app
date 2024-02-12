@@ -2,7 +2,7 @@
 
 import path from 'node:path';
 
-import { getLang, getPackageName, getTemplate, getDirectoryName } from './prompts';
+import { getLang, getProjectName, getTemplate, getDirectoryName } from './prompts';
 import { pipePrompts, buildConfigFromCLIArgs, copyTemplate, showCopySuccessInfo } from './helpers';
 
 async function createVkMiniApp() {
@@ -11,7 +11,7 @@ async function createVkMiniApp() {
 
   const templateConfig = await pipePrompts(
     getDirectoryName,
-    getPackageName,
+    getProjectName,
     getLang,
     getTemplate,
   )(initialConfig);

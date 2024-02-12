@@ -12,7 +12,7 @@ export const getLang: PromptFunction = async function (config) {
       message: chalk.white.bold('Select a lang:'),
       choices: LANGS.map((lang) => {
         return {
-          title: lang.color(lang.name),
+          title: lang.color(lang.display),
           value: lang.name,
         };
       }),
