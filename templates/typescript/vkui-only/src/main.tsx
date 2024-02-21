@@ -1,4 +1,4 @@
-import { createRoot} from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { AdaptivityProvider, AppRoot, ConfigProvider } from '@vkontakte/vkui';
 
