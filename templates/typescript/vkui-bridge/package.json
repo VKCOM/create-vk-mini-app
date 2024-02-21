@@ -1,5 +1,5 @@
 {
-  "name": "vkapp-router-bridge-ui",
+  "name": "vkui-bridge",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,6 @@
     "@vkontakte/icons": "^2.92.0",
     "@vkontakte/vk-bridge": "^2.13.0",
     "@vkontakte/vk-bridge-react": "^1.0.1",
-    "@vkontakte/vk-mini-apps-router": "^1.4.2",
     "@vkontakte/vkui": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

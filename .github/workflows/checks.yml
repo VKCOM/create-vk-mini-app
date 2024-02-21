@@ -41,4 +41,4 @@ jobs:
       - name: install dependencies
         run: yarn install && yarn run build && yarn link
       - name: Run create-vk-mini-app script
-        run: create-vk-mini-app mini-app --typescript --template=vkapp-ui
+        run: create-vk-mini-app mini-app --typescript --template=vkui-only

@@ -15,16 +15,16 @@ export const LANGS = [
 ];
 
 export const TEMPLATES_OPTIONS = {
-  'vkapp-router-bridge-ui': {
+  'vkui-bridge-router': {
     display: 'VKUI + Bridge + Router (recommended)',
     color: chalk.hex('#c7c7c7').bold,
     defaultValue: true,
   },
-  'vkapp-bridge-ui': {
+  'vkui-bridge': {
     display: 'VKUI + Bridge',
     color: chalk.hex('#c7c7c7'),
   },
-  'vkapp-ui': {
+  'vkui-only': {
     display: 'VKUI-only',
     color: chalk.hex('#c7c7c7'),
   },
@@ -35,4 +35,4 @@ export const TEMPLATES_OPTIONS = {
 };
 
 export const DEFAULT_DIR_NAME = 'mini-app';
-export const DEFAULT_TEMPLATE_NAME = 'vkapp-router-bridge-ui';
+export const DEFAULT_TEMPLATE_NAME = 'vkui-bridge-router';
