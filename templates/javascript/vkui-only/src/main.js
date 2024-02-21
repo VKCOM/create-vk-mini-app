@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { ConfigProvider, AdaptivityProvider, AppRoot } from '@vkontakte/vkui';
 import { App } from './App';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')).render(
   <ConfigProvider>
     <AdaptivityProvider>
       <AppRoot>
