@@ -125,7 +125,7 @@ npm init  @vkontakte/vk-mini-app . -- --template=vkapp-bridge-ui
 
 - [Документация vk-mini-apps-router](https://dev.vk.com/libraries/router)
 
-- [Примеры мини-приложений](https://dev.vk.com/ru/mini-apps/examples/shop)
+- [Примеры мини-приложений](https://dev.vk.com/ru/mini-apps/examples)
 
 - [Сообщество VK Mini Apps](https://vk.com/vkappsdev) — сообщество разработчиков мини-приложений ВКонтакте
 
