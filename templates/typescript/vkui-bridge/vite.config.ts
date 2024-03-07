@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { HTMLElement, parse } from 'node-html-parser';
+import legacy from '@vitejs/plugin-legacy';
 
 function handleModuleDirectivesPlugin() {
   return {
@@ -15,70 +15,24 @@ function handleModuleDirectivesPlugin() {
 }
 
 /**
- * This plugin is required for a single product build for the odr archive and a build for the site.
- * If you have a complex system and a custom script connection system, we recommend using 2 different configurations
- * for odr and for the site.
- *
- * Details: https://dev.vk.com/ru/mini-apps/development/on-demand-resources
+ * Some chunks may be large.
+ * This will not affect the loading speed of the site.
+ * We collect several versions of scripts that are applied depending on the browser version.
+ * This is done so that your code runs equally well on the site and in the odr.
+ * The details are here: https://dev.vk.com/mini-apps/development/on-demand-resources.
  */
-function odrPlugin() {
-  return {
-    name: 'odr-plugin',
-    transformIndexHtml(html) {
-      const tags = ['audio', 'video', 'img', 'link', 'script'];
-      const dom = parse(html);
+export default defineConfig({
+  base: './',
 
-      const htmlElementHandlers: Record<string, (element: HTMLElement) => void> = {
-        removeCrossorigin: (element) => {
-          element.removeAttribute('crossorigin');
-        },
+  plugins: [
+    react(),
+    handleModuleDirectivesPlugin(),
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
+  ],
 
-        changeSrc: (element) => {
-          let value = element.getAttribute('src');
-
-          if (String(value).startsWith('/')) {
-            value && element.setAttribute('src', '.' + value);
-          }
-
-          value = element.getAttribute('href');
-
-          if (String(value).startsWith('/')) {
-            value && element.setAttribute('href', '.' + value);
-          }
-        },
-
-        removeScriptType: (element) => {
-          element.removeAttribute('type');
-        },
-
-        changeScriptLoadToDefer: (element) => {
-          element.setAttribute('defer', 'defer');
-        },
-      };
-
-      tags.forEach((tag) => {
-        dom.getElementsByTagName(tag).forEach((element) => {
-          htmlElementHandlers.changeSrc(element);
-          htmlElementHandlers.removeCrossorigin(element);
-
-          if (element.tagName === 'script'.toUpperCase()) {
-            htmlElementHandlers.removeScriptType(element);
-            htmlElementHandlers.changeScriptLoadToDefer(element);
-          }
-        });
-      });
-
-      return dom.toString();
-    },
-  };
-}
-
-export default ({ mode }) => {
-  return defineConfig({
-    plugins: [react(), handleModuleDirectivesPlugin(), mode === 'production' && odrPlugin()],
-
-    build: {
-      outDir: 'build',
-    },
-  });
-};
+  build: {
+    outDir: 'build',
+  },
+});
