@@ -1,3 +1,7 @@
+## v2.0.7
+
+- Обновили версию и скрипт запуска утилиты @vkontakte/vk-tunnel.
+
 ## v2.0.6
 
 - Добавили в devDependencies обновленный @vkontakte/vk-tunnel.
