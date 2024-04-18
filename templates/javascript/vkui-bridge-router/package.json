@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "tunnel": "vk-tunnel --insecure=1 --http-protocol=http --ws-protocol=wss --host=localhost --port=5173",
+    "tunnel": "vk-tunnel --http-protocol=http --host=localhost --port=5173",
     "deploy": "vite build && vk-miniapps-deploy"
   },
   "dependencies": {
@@ -25,7 +25,7 @@
     "@vitejs/plugin-legacy": "^5.3.1",
     "@vitejs/plugin-react": "^4.2.1",
     "@vkontakte/vk-miniapps-deploy": "^0.1.6",
-    "@vkontakte/vk-tunnel": "^0.1.7",
+    "@vkontakte/vk-tunnel": "^0.2.0",
     "eruda": "^3.0.1",
     "esbuild": "~0.20.0",
     "eslint": "^8.55.0",
