@@ -28,6 +28,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Bump version
+        id: updated_versions_info
         uses: ./.github/actions/bump-version
         with:
           version: ${{ github.event.inputs.new_version }}
