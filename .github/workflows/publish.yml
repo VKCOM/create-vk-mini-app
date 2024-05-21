@@ -38,3 +38,5 @@ jobs:
           branch: ${{ github.ref }}
           prev_version: ${{ steps.updated_versions_info.outputs.prev_version }}
           next_version: ${{ steps.updated_versions_info.outputs.next_version }}
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+          npm_token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}

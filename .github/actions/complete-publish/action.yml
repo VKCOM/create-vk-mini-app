@@ -14,6 +14,11 @@ inputs:
   npm_tag:
     description: tag for NPM artifact
     required: false
+  token:
+    description: token for write access to repository
+    required: true
+  npm_token:
+    description: token for publish package to NPM
 
 runs:
   using: composite
@@ -28,19 +33,19 @@ runs:
     - name: Pushing changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+        github_token: ${{ inputs.token }}
         branch: ${{ inputs.ref }}
 
     - name: Publishing release
       if: ${{ !inputs.npm_tag }}
       run: yarn publish --access public --non-interactive
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
       shell: bash
 
     - name: Publishing release with npm_tag
       if: ${{ inputs.npm_tag }}
       run: yarn publish --access public --non-interactive --tag ${{ inputs.npm_tag }}
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
       shell: bash
