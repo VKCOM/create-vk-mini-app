@@ -26,7 +26,7 @@ on:
         description: 'use syntax x.y.z-beta.0, without "v" (it ignore "version type" parameter):'
         required: false
 
-run-name: Publish pre-release create-vk-mini-app ${{ inputs.new_version }} ${{ inputs.custom_version }}
+run-name: Publish ${{ inputs.new_version }} create-vk-mini-app ${{ inputs.custom_version }}
 
 jobs:
   publish:
@@ -41,6 +41,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Bump version
+        id: updated_versions_info
         uses: ./.github/actions/bump-version
         with:
           version: ${{ github.event.inputs.custom_version || github.event.inputs.new_version }}
