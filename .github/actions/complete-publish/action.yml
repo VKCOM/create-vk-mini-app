@@ -23,6 +23,7 @@ runs:
         git add -A
         git commit -m 'bump(create-vk-mini-app): from ${{ inputs.prev_version }} to ${{ inputs.next_version }}'
         git tag create-vk-mini-app@${{ inputs.next_version }}
+      shell: bash
 
     - name: Pushing changes
       uses: ad-m/github-push-action@master
@@ -35,9 +36,11 @@ runs:
       run: yarn publish --access public --non-interactive
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+      shell: bash
 
     - name: Publishing release with npm_tag
       if: ${{ inputs.npm_tag }}
       run: yarn publish --access public --non-interactive --tag ${{ inputs.npm_tag }}
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+      shell: bash

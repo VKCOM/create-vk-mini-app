@@ -14,8 +14,10 @@ runs:
 
     - name: Install dependencies
       run: yarn install --frozen-lockfile --ignore-scripts
+      shell: bash
 
     - name: Set Git credentials
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Action"
+      shell: bash

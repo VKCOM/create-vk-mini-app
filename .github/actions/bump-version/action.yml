@@ -21,15 +21,19 @@ runs:
      - name: Saving current version to env
       id: internal_id_prev_version
       run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: Bump version
       if: ${{ !inputs.npm_tag }}
       run: yarn version --new-version "${{ inputs.version }}" --no-commit-hooks
+      shell: bash
 
     - name: Bump version with npm_tag
       if: ${{ inputs.npm_tag }}
       run: yarn version --new-version "${{ inputs.version }}" --preid ${{ inputs.npm_tag }} --no-commit-hooks
+      shell: bash
 
     - name: Saving new version to env
       id: internal_id_next_version
       run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      shell: bash
