@@ -23,11 +23,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Commit and tag
-      run: |
-        git add -A
-        git commit -m 'bump(create-vk-mini-app): from ${{ inputs.prev_version }} to ${{ inputs.next_version }}'
-        git tag create-vk-mini-app@${{ inputs.next_version }}
+    - name: Create tag
+      run: git tag create-vk-mini-app@${{ inputs.next_version }}
       shell: bash
 
     - name: Pushing changes
