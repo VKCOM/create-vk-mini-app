@@ -3,50 +3,53 @@ name: 'Publish (pre-release)'
 on:
   workflow_dispatch:
     inputs:
-      tag:
+      new_version:
+        description: 'version type (use prerelease for bumping pre-release version):'
         required: true
-        description: 'tag ("beta" or "alpha"):'
+        type: choice
+        default: 'prerelease'
+        options:
+          - prepatch
+          - preminor
+          - premajor
+          - prerelease
+      npm_tag:
+        required: true
+        description: 'NPM tag:'
         type: choice
         default: 'beta'
         options:
-          - beta
           - alpha
-      version:
-        description: 'version: x.y.z-beta.0 or x.y.z-alpha.0 (without "v")'
-        required: true
+          - beta
+          - rc
+      custom_version:
+        description: 'use syntax x.y.z-beta.0, without "v" (it ignore "version type" parameter):'
+        required: false
+
+run-name: Publish pre-release create-vk-mini-app ${{ inputs.new_version }} ${{ inputs.custom_version }}
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v4
+      - name: Setting up the repository environment
+        uses: ./.github/actions/setup
+
+      - name: Bump version
+        uses: ./.github/actions/bump-version
         with:
-          node-version: 20
-          cache: 'yarn'
-          always-auth: true
-          registry-url: 'https://registry.npmjs.org'
+          version: ${{ github.event.inputs.custom_version || github.event.inputs.new_version }}
+          npm_tag: ${{ github.event.inputs.npm_tag }}
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-scripts
-
-      - name: Set Git credentials
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Action"
-
-      - run: yarn version --new-version "${{ github.event.inputs.version }}" --no-commit-hooks
-
-      - name: Pushing changes
-        uses: ad-m/github-push-action@master
+      - name: Complete publish
+        uses: ./.github/actions/complete-publish
         with:
-          github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-
-      - name: Publishing release
-        run: yarn publish --access public --non-interactive --tag ${{ github.event.inputs.tag }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+          prev_version: ${{ steps.updated_versions_info.outputs.prev_version }}
+          next_version: ${{ steps.updated_versions_info.outputs.next_version }}
+          npm_tag: ${{ github.event.inputs.npm_tag }}

@@ -3,40 +3,38 @@ name: 'Publish'
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'version (without v prefix)'
+      new_version:
+        description: 'version type:'
+        type: choice
+        default: 'minor'
+        options:
+          - patch
+          - minor
+          - major
         required: true
+
+run-name: Publish create-vk-mini-app ${{ inputs.new_version }}
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'yarn'
-          always-auth: true
-          registry-url: 'https://registry.npmjs.org'
+      - name: Setting up the repository environment
+        uses: ./.github/actions/setup
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-scripts
-
-      - name: Set Git credentials
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Action"
-      - run: yarn version --new-version ${{ github.event.inputs.version }} --no-commit-hooks
-      - name: Pushing changes
-        uses: ad-m/github-push-action@master
+      - name: Bump version
+        uses: ./.github/actions/bump-version
         with:
-          github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+          version: ${{ github.event.inputs.new_version }}
+
+      - name: Complete publish
+        uses: ./.github/actions/complete-publish
+        with:
           branch: ${{ github.ref }}
-
-      - name: Publushing release
-        run: yarn publish --access public --non-interactive
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+          prev_version: ${{ steps.updated_versions_info.outputs.prev_version }}
+          next_version: ${{ steps.updated_versions_info.outputs.next_version }}

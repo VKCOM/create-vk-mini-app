@@ -1,0 +1,43 @@
+name: Publish Workflow / Complete
+description: It finish publishing
+
+inputs:
+  branch:
+    description: target branch for git push
+    required: true
+  prev_version:
+    description: package's prev version
+    required: true
+  next_version:
+    description: package's next version
+    required: true
+  npm_tag:
+    description: tag for NPM artifact
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Commit and tag
+      run: |
+        git add -A
+        git commit -m 'bump(create-vk-mini-app): from ${{ inputs.prev_version }} to ${{ inputs.next_version }}'
+        git tag create-vk-mini-app@${{ inputs.next_version }}
+
+    - name: Pushing changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+        branch: ${{ inputs.ref }}
+
+    - name: Publishing release
+      if: ${{ !inputs.npm_tag }}
+      run: yarn publish --access public --non-interactive
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
+
+    - name: Publishing release with npm_tag
+      if: ${{ inputs.npm_tag }}
+      run: yarn publish --access public --non-interactive --tag ${{ inputs.npm_tag }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
