@@ -18,9 +18,9 @@ outputs:
 runs:
   using: composite
   steps:
-     - name: Saving current version to env
+    - name: Saving current version to env
       id: internal_id_prev_version
-      run: echo "value=$(yarn workspace @vkontakte/create-vk-mini-app node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: Bump version
@@ -35,5 +35,5 @@ runs:
 
     - name: Saving new version to env
       id: internal_id_next_version
-      run: echo "value=$(yarn workspace @vkontakte/create-vk-mini-app node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       shell: bash
