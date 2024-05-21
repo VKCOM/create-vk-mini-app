@@ -18,7 +18,7 @@ outputs:
 runs:
   using: composite
   steps:
-     - name: Saving current version to env
+    - name: Saving current version to env
       id: internal_id_prev_version
       run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       shell: bash
