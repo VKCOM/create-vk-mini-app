@@ -53,3 +53,5 @@ jobs:
           prev_version: ${{ steps.updated_versions_info.outputs.prev_version }}
           next_version: ${{ steps.updated_versions_info.outputs.next_version }}
           npm_tag: ${{ github.event.inputs.npm_tag }}
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+          npm_token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
