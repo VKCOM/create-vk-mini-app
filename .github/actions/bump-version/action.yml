@@ -3,7 +3,7 @@ description: It bump version of provided package
 
 inputs:
   version:
-    description: <newversion> | major | minor | patch | pre-major | pre-minor | pre-patch | pre-release
+    description: <newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease
     required: true
   npm_tag:
     description: tag for NPM artifact

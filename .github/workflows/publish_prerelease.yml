@@ -9,10 +9,10 @@ on:
         type: choice
         default: 'prerelease'
         options:
-          - pre-patch
-          - pre-minor
-          - pre-major
-          - pre-release
+          - prepatch
+          - preminor
+          - premajor
+          - prerelease
       npm_tag:
         required: true
         description: 'NPM tag:'
