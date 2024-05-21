@@ -147,3 +147,5 @@ npm init  @vkontakte/vk-mini-app . -- --template=vkapp-bridge-ui
    Запустите его, чтобы протестировать изменения: `create-vk-mini-app`.
 
 6. Отправьте MR нам на проверку.
+
+# test
