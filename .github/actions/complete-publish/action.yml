@@ -31,7 +31,7 @@ runs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ inputs.token }}
-        branch: ${{ inputs.ref }}
+        branch: ${{ inputs.branch }}
 
     - name: Publishing release
       if: ${{ !inputs.npm_tag }}
