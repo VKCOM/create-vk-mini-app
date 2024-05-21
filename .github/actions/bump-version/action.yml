@@ -26,7 +26,7 @@ runs:
       if: ${{ !inputs.npm_tag }}
       run: yarn version --new-version "${{ inputs.version }}" --no-commit-hooks
 
-    - name: Bump version
+    - name: Bump version with npm_tag
       if: ${{ inputs.npm_tag }}
       run: yarn version --new-version "${{ inputs.version }}" --preid ${{ inputs.npm_tag }} --no-commit-hooks
 
