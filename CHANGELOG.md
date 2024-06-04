@@ -1,3 +1,7 @@
+## v2.0.8
+
+- Добавили настройки vite для hot-reload @vkontakte/vk-tunnel.
+
 ## v2.0.7
 
 - Обновили версию и скрипт запуска утилиты @vkontakte/vk-tunnel.
