@@ -1,4 +1,4 @@
-## v2.0.8
+## v2.0.10
 
 - Добавили настройки vite для hot-reload @vkontakte/vk-tunnel.
 
