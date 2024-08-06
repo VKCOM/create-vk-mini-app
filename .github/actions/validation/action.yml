@@ -1,0 +1,9 @@
+name: 'Validation'
+description: It runs linter and prettier checks
+
+runs:
+  using: composite
+  steps:
+    - name: Run linters
+      run: yarn lint:ci
+      shell: bash

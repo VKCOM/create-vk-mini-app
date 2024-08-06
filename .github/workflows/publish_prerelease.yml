@@ -47,6 +47,9 @@ jobs:
           version: ${{ github.event.inputs.custom_version || github.event.inputs.new_version }}
           npm_tag: ${{ github.event.inputs.npm_tag }}
 
+      - name: Validation
+        uses: ./.github/actions/validation
+
       - name: Complete publish
         uses: ./.github/actions/complete-publish
         with:

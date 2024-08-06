@@ -1,0 +1,19 @@
+name: 'Pull Request'
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
+
+      - name: Setting up the repository environment
+        uses: ./.github/actions/setup
+
+      - name: Validation
+        uses: ./.github/actions/validation
