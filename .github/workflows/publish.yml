@@ -33,6 +33,9 @@ jobs:
         with:
           version: ${{ github.event.inputs.new_version }}
 
+      - name: Validation
+        uses: ./.github/actions/validation
+
       - name: Complete publish
         uses: ./.github/actions/complete-publish
         with:

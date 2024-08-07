@@ -12,7 +12,8 @@
     "build": "tsc && esbuild src/create-vk-mini-app.ts --bundle --platform=node --target=node18.0 --outfile=bin/create-vk-mini-app.js",
     "lint:eslint": "eslint ./src --ext=ts",
     "lint:prettier": "prettier --check --ignore-unknown .",
-    "eslint:fix": "eslint ./src --ext=ts --fix",
+    "lint:fix": "eslint ./src --ext=ts --fix",
+    "lint:ci": "yarn lint:eslint && yarn lint:prettier",
     "prepublishOnly": "yarn build"
   },
   "engines": {
