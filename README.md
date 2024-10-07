@@ -108,7 +108,7 @@ yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkui-bridge
 #### Пример 2
 
 ```
-npm init  @vkontakte/vk-mini-app . -- --template=vkapp-bridge-ui
+npm init  @vkontakte/vk-mini-app . -- --template=vkui-bridge
 ```
 
 Создаст проект из структурного шаблона `VKUI+Bridge`. Скрипт запросит имя папки и язык программирования.
