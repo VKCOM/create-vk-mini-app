@@ -9,8 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
 
       - name: Setting up the repository environment
         uses: ./.github/actions/setup
