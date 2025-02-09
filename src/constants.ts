@@ -20,6 +20,10 @@ export const TEMPLATES_OPTIONS = {
     color: chalk.hex('#c7c7c7').bold,
     defaultValue: true,
   },
+  'vkui-bridge-router-fsd': {
+    display: 'VKUI + Bridge + Router (FSD)',
+    color: chalk.hex('#c7c7c7'),
+  },
   'vkui-bridge': {
     display: 'VKUI + Bridge',
     color: chalk.hex('#c7c7c7'),
