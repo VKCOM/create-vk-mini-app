@@ -105,7 +105,7 @@ yarn create  @vkontakte/vk-mini-app mini-app --typescript --template=vkui-bridge
 
 Создаст проект из структурного шаблона `VKUI+Bridge+Router` на TypeScript в подпапке `mini-app` текущей папки.
 
-#### Пример 2
+#### Пример 3
 
 ```
 npm init  @vkontakte/vk-mini-app . -- --template=vkui-bridge
