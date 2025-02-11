@@ -17,5 +17,4 @@ updates:
     allow:
       - dependency-type: 'direct'
     reviewers:
-      - 'VKCOM/vk-sec'
       - 'VKCOM/vk-miniapp'
