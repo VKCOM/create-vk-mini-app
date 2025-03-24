@@ -56,15 +56,6 @@ export default defineConfig({
     },
   },
 
-  server: {
-    port: 5173,
-    host: 'localhost',
-    hmr: {
-      protocol: 'ws',
-      host: 'localhost',
-    },
-  },
-
   build: {
     outDir: 'build',
   },

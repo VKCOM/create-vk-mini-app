@@ -7,7 +7,7 @@ import { Persik, Home } from './panels';
 export const App = () => {
   const [activePanel, setActivePanel] = useState('home');
   const [fetchedUser, setUser] = useState<UserInfo | undefined>();
-  const [popout, setPopout] = useState<ReactNode | null>(<ScreenSpinner size="large" />);
+  const [popout, setPopout] = useState<ReactNode | null>(<ScreenSpinner />);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,13 +23,14 @@ export const App = () => {
   };
 
   return (
-    <SplitLayout popout={popout}>
+    <SplitLayout>
       <SplitCol>
         <View activePanel={activePanel}>
           <Home id="home" fetchedUser={fetchedUser} go={go} />
           <Persik id="persik" go={go} />
         </View>
       </SplitCol>
+      {popout}
     </SplitLayout>
   );
 };
