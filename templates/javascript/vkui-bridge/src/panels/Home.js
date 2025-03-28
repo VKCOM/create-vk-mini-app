@@ -8,14 +8,14 @@ export const Home = ({ id, go, fetchedUser }) => {
     <Panel id={id}>
       <PanelHeader>Главная</PanelHeader>
       {fetchedUser && (
-        <Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
+        <Group header={<Header size="s">User Data Fetched with VK Bridge</Header>}>
           <Cell before={photo_200 && <Avatar src={photo_200} />} subtitle={city?.title}>
             {`${first_name} ${last_name}`}
           </Cell>
         </Group>
       )}
 
-      <Group header={<Header mode="secondary">Navigation Example</Header>}>
+      <Group header={<Header size="s">Navigation Example</Header>}>
         <Div>
           <Button stretched size="l" mode="secondary" onClick={() => go('persik')}>
             Покажите Персика, пожалуйста!

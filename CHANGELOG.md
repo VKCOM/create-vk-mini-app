@@ -1,3 +1,7 @@
+## v2.1.0
+
+- Перевели шаблоны на `@vkontakte/vkui@7`, обновили `@vkontakte/vk-mini-apps-router`, `@vkontakte/icons` и `@vkontakte/vk-tunnel`.
+
 ## v2.0.10
 
 - Добавили настройки vite для hot-reload @vkontakte/vk-tunnel.
