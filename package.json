@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/create-vk-mini-app",
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "VK Mini Apps Boilerplate",
   "repository": "https://github.com/VKCOM/create-vk-mini-app",
   "homepage": "https://vk.com/dev/vk_apps_docs",
