@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "description": "VK Mini Apps Boilerplate",
   "repository": "https://github.com/VKCOM/create-vk-mini-app",
-  "homepage": "https://vk.com/dev/vk_apps_docs",
+  "homepage": "https://vk.ru/dev/vk_apps_docs",
   "main": "bin/create-vk-mini-app.js",
   "bin": {
     "create-vk-mini-app": "./bin/create-vk-mini-app.js"
@@ -22,7 +22,7 @@
   "keywords": [],
   "author": {
     "name": "VK",
-    "url": "https://vk.com"
+    "url": "https://vk.ru"
   },
   "license": "MIT",
   "dependencies": {

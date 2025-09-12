@@ -24,4 +24,4 @@
 
 ## v2.0.3
 
-- 26.02.2024 - Публикация. Описание можно найти в [документации](https://dev.vk.com/ru/mini-apps/getting-started/create-vk-mini-app).
+- 26.02.2024 - Публикация. Описание можно найти в [документации](https://dev.vk.ru/ru/mini-apps/getting-started/create-vk-mini-app).
