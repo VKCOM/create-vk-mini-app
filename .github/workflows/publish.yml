@@ -18,6 +18,8 @@ run-name: Publish create-vk-mini-app ${{ inputs.new_version }}
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,4 +45,3 @@ jobs:
           prev_version: ${{ steps.updated_versions_info.outputs.prev_version }}
           next_version: ${{ steps.updated_versions_info.outputs.next_version }}
           token: ${{ secrets.DEVTOOLS_GITHUB_TOKEN }}
-          npm_token: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
