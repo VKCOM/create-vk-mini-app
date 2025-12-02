@@ -1,3 +1,7 @@
+## v2.1.1
+
+- Технический релиз
+
 ## v2.1.0
 
 - Перевели шаблоны на `@vkontakte/vkui@7`, обновили `@vkontakte/vk-mini-apps-router`, `@vkontakte/icons` и `@vkontakte/vk-tunnel`.
