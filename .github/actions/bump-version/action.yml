@@ -25,12 +25,12 @@ runs:
 
     - name: Bump version
       if: ${{ !inputs.npm_tag }}
-      run: yarn version --new-version "${{ inputs.version }}" --no-commit-hooks
+      run: yarn version --new-version "${{ inputs.version }}" --no-commit-hooks --no-git-tag-version
       shell: bash
 
     - name: Bump version with npm_tag
       if: ${{ inputs.npm_tag }}
-      run: yarn version --new-version "${{ inputs.version }}" --preid ${{ inputs.npm_tag }} --no-commit-hooks
+      run: yarn version --new-version "${{ inputs.version }}" --preid ${{ inputs.npm_tag }} --no-commit-hooks --no-git-tag-version
       shell: bash
 
     - name: Saving new version to env
