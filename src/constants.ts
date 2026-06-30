@@ -24,10 +24,6 @@ export const TEMPLATES_OPTIONS = {
     display: 'VKUI + Bridge',
     color: chalk.hex('#c7c7c7'),
   },
-  'vkui-only': {
-    display: 'VKUI-only',
-    color: chalk.hex('#c7c7c7'),
-  },
   'default': {
     display: undefined,
     color: chalk.hex('#c7c7c7'),

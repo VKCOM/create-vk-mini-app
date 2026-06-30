@@ -1,6 +1,6 @@
 # Basic [VK Bridge](https://github.com/VKCOM/vk-bridge) + [VKUI](https://github.com/VKCOM/VKUI) + [VK Miniapps Router](https://github.com/VKCOM/vk-mini-apps-router) app
 
-Этот шаблон предоставляет базовый код и настройки для создания мини-приложения внутри ВКонтакте.  
+Этот шаблон предоставляет базовый код и настройки для создания мини-приложения внутри ВКонтакте.
 В качестве сборщика проекта выступает [Vite](https://vite-docs-ru.vercel.app/guide/), подробнее про его конфигурацию и дополнительные плагины можно прочитать [здесь](https://vite-docs-ru.vercel.app/config/) и [здесь]().
 
 ## 🚀 Запуск мини приложения
@@ -11,21 +11,12 @@
  yarn start
 ```
 
-Перейдите на [devportal](https://dev.vk.ru/ru) или в [управление](https://vk.ru/apps?act=manage) и создайте новый мини апп.  
+Перейдите на [devportal](https://dev.vk.ru/ru) или в [управление](https://vk.ru/apps?act=manage) и создайте новый мини апп.
 Вставьте URL на котором работает ваше приложение в настройки, предварительно включив режим разработки.
 Теперь можете открыть мини апп, нажав на его иконку.
 Список всех созданных вами мини приложений вы сможете найти [тут](https://vk.ru/apps?act=manage) или [тут](https://dev.vk.ru/ru/admin/apps-list).
 
 ## 🌐 Деплой мини приложения
-
-Для того чтобы поделиться приложением запущенным на localhost со своими друзьями, вы можете скачать утилиту vk-tunnel и запустить уже подготовленный скрипт из package.json
-
-```sh
-yarn global add @vkontakte/vk-tunnel
-yarn run tunnel
-```
-
-После чего вы получите ссылку, по которой ваше приложение будет доступно с любого устройства, подробнее про vk-tunnel можно прочитать [тут](https://dev.vk.ru/ru/libraries/tunnel).
 
 Для того чтобы захостить ваше приложение на сервера ВКонтакте нужно зайти в vk-hosting-config.json и указать id вашего приложения. Далее можно запустить уже подготовленный скрипт:
 
@@ -50,6 +41,6 @@ yarn run deploy
 
 ## 📎 Полезные ссылки
 
-[Dev портал разработчиков](https://dev.vk.ru/ru)  
-[Пример мини приложения](https://dev.vk.ru/ru/mini-apps/examples/shop)  
+[Dev портал разработчиков](https://dev.vk.ru/ru)
+[Пример мини приложения](https://dev.vk.ru/ru/mini-apps/examples/shop)
 [Если столкнулись с проблемами](https://github.com/VKCOM/create-vk-mini-app/issues)

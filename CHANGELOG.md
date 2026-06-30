@@ -1,3 +1,9 @@
+## v3.0.0
+
+- Перевели шаблоны на `@vkontakte/vkui@8`, обновили `@vkontakte/vk-mini-apps-router`, `@vkontakte/icons`.
+- Из зависимостей удален `@vkontakte/vk-tunnel`
+- Удален шаблон `vkui-only`, актуальный шаблон есть в репозитории [vkui](https://github.com/VKCOM/VKUI/tree/master/examples)
+
 ## v2.1.1
 
 - Технический релиз
